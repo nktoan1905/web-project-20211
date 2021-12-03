@@ -1,0 +1,29 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+}
+
+.pagination > div {
+    display: flex;
+    position: relative;
+}
+
+.pagination a {
+    color: #f3dede;
+    float: left;
+    padding: 8px 16px;
+    background-color: #585858;
+    text-decoration: none;
+}
+
+.pagination > div > div {
+    color: #ccc;
+    position: absolute;
+    bottom: 100%;
+    box-sizing: border-box;
+    display: none;
+    width: 100%;
+    animation-duration: 0.2s;
+    animation-name: goPage;
+}

@@ -1,0 +1,15 @@
+.footer {
+    display: block;
+    padding: 30px 5px;
+    border-top: 1px solid #525151;
+}
+
+.mainclass {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer img {
+    width: 200px;
+}
