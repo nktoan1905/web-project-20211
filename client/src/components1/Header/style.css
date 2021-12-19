@@ -1,0 +1,24 @@
+.tab-content {
+    display: block;
+}
+
+.tab-content .tab-cate {
+    display: block !important;
+}
+
+.tab-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tab-flex a {
+    width: 20%;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #141414;
+    font-size: 13px;
+    background: #000;
+    text-decoration: none;
+    color: #cac9c9;
+}

@@ -1,0 +1,28 @@
+.filter-movie {
+    border: 1px solid #4c4c4c;
+    background: #1d1c1c;
+}
+
+.trigger-buttons {
+    display: flex;
+}
+
+.trigger-buttons div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    padding: 10px 0;
+    box-sizing: border-box;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.icon1 {
+    font-size: 21px;
+}
+
+#filtering {
+    margin-bottom: 10px;
+    display: flex;
+}

@@ -1,0 +1,77 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username":"gnourt1234",
+    "password":"1234"
+}
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username":"gnourt123",
+    "password":"1234"
+}
+
+###
+POST http://localhost:5000/api/films
+Content-Type: application/json
+
+{
+    "title":"Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
+    "description":"Naruto là một chàng trai trẻ đầy nhiệt huyết cũng như rất nghịch ngợm, trải qua bao nhiêu thăng trầm, cậu trở thành anh hùng của thế giới nhẫn giả và lên chức Hokage làng lá. Nhưng câu chuyện này không phải về naruto, mà là về con trai của naruto, chính là Boruto.",
+    "category":"Anime Hành động Giả tưởng Mecha",
+    "image":"https://animehay.club/upload/poster/3353-1633233301.jpg",
+    "point":0,
+    "reviewerNum":0,
+    "status":"2021"
+
+}
+
+###
+POST http://localhost:5000/api/films/byId/61bdc490f43d62cd12d42851
+Content-Type: application/json
+
+{
+    "title":"3",
+    "epNum":3,
+    "url":"https://www.youtube.com/watch?v=y_zJB9Wdo14"
+}
+
+
+###
+GET http://localhost:5000/api/films
+
+###
+GET http://localhost:5000/api/films/byId/61bdc490f43d62cd12d42851
+
+
+###
+POST http://localhost:5000/api/comments/61bdc490f43d62cd12d42851
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY2I2NjA0YjE3NmNjMjQ4MDRlYTgiLCJpYXQiOjE2Mzk4MzUxMzJ9.2qVtJJs0TNOceUN_MYUJ3mvxGJGJTtGuNrUEasuAv9E
+
+{
+    
+    "commentBody":"Hay lắm",
+    "commentParentId":"61bdf5e4c91bb52aa16aa38f"
+}
+
+###
+GET  http://localhost:5000/api/comments/617ccdd8635cc50f5e3b5c55
+
+###
+PUT http://localhost:5000/api/comments/61862dbdd12fb95a00f0f28f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY2I2NjA0YjE3NmNjMjQ4MDRlYTgiLCJpYXQiOjE2MzYxODMwMTh9.KwJ7NuyZU8t4MB8nvQZJzVKCQpm0TbEGsDy0gE_67Js
+
+{
+    "commentBody":"Hay lắm nha"
+}
+
+###
+DELETE  http://localhost:5000/api/comments/61862dbdd12fb95a00f0f28f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY2I2NjA0YjE3NmNjMjQ4MDRlYTgiLCJpYXQiOjE2MzYxODMwMTh9.KwJ7NuyZU8t4MB8nvQZJzVKCQpm0TbEGsDy0gE_67Js

@@ -1,0 +1,28 @@
+.history {
+    display: block;
+}
+
+.histitle {
+    margin: 10px 0;
+    background-color: #242525;
+}
+
+.histitle .histit {
+    font-size: 17px;
+    font-weight: 700;
+    position: relative;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    background-color: #000;
+    color: #a7a7a7;
+}
+
+.NdungHis > div {
+    background: #000;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}

@@ -1,0 +1,55 @@
+.listfilm {
+    display: flex;
+    overflow: hidden;
+}
+
+.listfilm > div {
+    width: 220px;
+    margin-right: 10px;
+}
+
+.listfilm  div a div {
+    display: block;
+    position: relative;
+}
+
+.listfilm div a div img {
+    width: 220px;
+    height: 270px;
+}
+
+a {
+    text-decoration: none;
+    color: #cac9c9;
+}
+
+.listfilm div a .name {
+    position: absolute;
+    background: linear-gradient(
+        0deg,
+        rgb(0 0 0 / 50%) 0%,
+        rgb(25 25 25 / 50%) 28%,
+        rgb(37 37 37 / 0%) 78%
+      );
+    bottom: 2px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.listfilm div a .episode_latest {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    background: #883636;
+    border-radius: 10%;
+    padding: 5px 10px;
+    display: block;
+}
