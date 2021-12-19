@@ -1,0 +1,82 @@
+.over {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #424242;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #cac9c9;
+}
+
+.logo a img {
+    width: 200px;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.search form {
+    border: 1px solid #404040;
+    min-width: 250px;
+    display: flex;
+    flex: 0.9;
+    margin: 0;
+}
+
+.search input {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: #a7a7a7;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+}
+
+.search button {
+    font-size: 25px;
+    margin: 0 !important;
+    padding: 0 5px !important;
+    background-color: #000;
+    color: #a7a7a7;
+    border: 0;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav-items a {
+    padding: 7px 10px;
+    margin: 3px 3px;
+    font-size: 20px;
+    display: inline-flex;
+    background-color: #000;
+    border: 1px solid #404040;
+}
+
+.material-icon {
+    font-family: "Material Icons Round";
+    font-weight: normal;
+    font-style: normal;
+    /* font-size: 24px; */
+    line-height: 1;
+    /* margin-right: 5px; */
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}

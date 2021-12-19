@@ -1,0 +1,31 @@
+.condition-filter {
+    background: #1d1c1c;
+}
+
+.condition-filter > div {
+    padding: 5px;
+    border-top: 2px solid #3a79af;
+}
+
+
+.tit1 {
+    font-weight: 500; 
+    margin: 5px 0;
+}
+
+.ite1 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ite1 > div {
+    background: #444;
+    padding: 10px;
+    margin: 2px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.ite1 > div:hover {
+    background: #3e3e3e;
+}

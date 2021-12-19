@@ -1,0 +1,83 @@
+.Dky {
+    display: block;
+}
+
+.DkyTit {
+    margin: 10px 0;
+    background-color: #242525;
+    display: block;
+}
+
+.DkyTit div {
+    font-size: 17px;
+    font-weight: 700;
+    position: relative;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    background-color: #000;
+    color: #a7a7a7;
+}
+
+.DkyNdung {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #404040;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.DkyNdung form {
+    width: 500px;
+    display: block;
+    margin-top: 0em;
+}
+
+.DkyNdung form div {
+    margin-top: 10px 0;
+    display: block;
+}
+
+.DkyNdung div label {
+    font-weight: 500;
+    font-size: 15px;
+    cursor: default;
+}
+
+.DkyNdung div input {
+    line-height: 20px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background: #000;
+    opacity: 0.8;
+    color: #e6dddd !important;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 0;
+}
+
+.DkyNdung div:last-child {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 10px 0;
+    flex-direction: column;
+}
+
+.DkyNdung div:last-child button {
+    background: #37869e;
+    color: #fff;
+    margin: 5px 0;
+    padding: 10px 20px;
+    display: inline-flex;
+    border-radius: 5px;
+    margin: 0 2px;
+    padding: 10px;
+    border-bottom: 3px solid #292929;
+    cursor: pointer;
+    border: 0;
+}

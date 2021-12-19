@@ -1,0 +1,106 @@
+.LoginT {
+    margin: 10px 0;
+    background-color: #242525;
+}
+
+.LoginT > div {
+    font-size: 17px;
+    font-weight: 700;
+    position: relative;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    background-color: #000;
+    color: #a7a7a7;
+}
+
+
+.LoginNdung {
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    background: #404040;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.LoginNdung form {
+    width: 500px;
+    margin-top: 0em;
+    display: block;
+}
+
+.LoginNdung div {
+    margin: 10px 0;
+    display: block;
+}
+
+.LoginNdung div label {
+    font-weight: 500;
+    font-size: 15px;
+    cursor: default;
+}
+
+.LoginNdung div input {
+    line-height: 20px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background: #000;
+    opacity: 0.8;
+    color: #e6dddd !important;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 0; 
+}
+
+#chenthem {
+    margin: 10px 0;
+    display: block; 
+}
+
+.cacButton {
+    display: flex;
+    text-align: center;
+    margin: 10px 0;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hinuttren {
+    display: flex;
+    align-items: center;
+}
+
+.hinuttren button {
+    background-color: #b73a3a;
+    color: #fff;
+    display: inline-flex;
+    border-radius: 5px;
+    margin: 0 2px;
+    padding: 10px;
+    border-bottom: 3px solid #292929;
+    cursor: pointer;
+    border: 0;
+}
+
+.hinuttren a {
+    margin: 10px 0;
+    text-decoration: none;
+    color: #cac9c9;
+    text-align: center;
+}
+
+.cacButton div:last-child a {
+    margin: 5px 0;
+    padding: 10px 20px;
+    color: #cac9c9;
+    background-color: #369e69;
+    text-decoration: none;
+    display: inline-flex;
+    border-radius: 5px;
+    border-bottom: 3px solid #292929;   
+    cursor: pointer;
+}

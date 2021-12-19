@@ -3,7 +3,7 @@ import './style.css';
 
 function ListFilm(props) {
   return (
-    <div className="movie-list">
+    <div className="movie-list1">
       <div className="movie-item">
         <a
           href="https://animehay.site/thong-tin-phim/build-divide-code-black-3363.html"
@@ -78,7 +78,6 @@ function ListFilm(props) {
           <div className="episode-latest">
             <span>7/??</span>
           </div>
-          index
           <div>
             <img src="https://animehay.site//upload/poster/3341.jpg" alt="Phim Sankaku Mado no Sotogawa wa Yoru" />
           </div>
