@@ -25,7 +25,7 @@ const Comment = ({
     activeComment.type === "replying";
 
  
-  
+  const replyId = parentId ? parentId : comment._id; 
   const date = new Date(comment.createdAt)
   
 
@@ -90,7 +90,7 @@ const Comment = ({
                   <CommentForm
                     hasCancelButton
                     submitLabel="Phản hồi"
-                    handleSubmit={(text) => addComment(text,parentId,filmId)}
+                    handleSubmit={(text) => {addComment(text,replyId,filmId);setActiveComment(null)}}
                     handleCancel={() => {setActiveComment(null);}
                     }
                   />

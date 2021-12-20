@@ -7,8 +7,9 @@ function ListFilm(props) {
   useEffect(() => getFilms(), [])
   console.log(films)
   return (
-    films.map(film => (
-      <div className="movie-list">
+    <div className="movie-list">
+    {films.map(film => (
+      
       <div className="movie-item">
         <a
           href={`/film/${film._id}`}
@@ -23,8 +24,9 @@ function ListFilm(props) {
           <div className="name-movie">{film.title}</div>
         </a>
       </div>
+    
+    ))}
     </div>
-    ))
     
   );
 }
