@@ -3,6 +3,8 @@ import '../../components1/BodyFilm/MoiCapNhat/Listfilm/style.css'
 import { SubfilmContext } from '../contexts/SubFilmContext'
 import { AuthContext } from '../contexts/AuthContext'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Subcribe = () => {
     const {subfilmState:{subfilm},getSubfilm,deleteSubfilm} = useContext(SubfilmContext)
@@ -15,8 +17,11 @@ const Subcribe = () => {
         
     })
 
+    const notifyCancel = () => toast("Đã bỏ theo dõi")
+
     const body = (
         <>
+        
         {subfilm.length !==0 && 
         subfilm.map(film => (
                             
@@ -35,7 +40,7 @@ const Subcribe = () => {
                 
                 </Link>
                 
-                <button onClick={() => deleteSubfilm(user._id,film.filmId)} className='close'><i class="bi bi-x-lg"></i></button>
+                <button onClick={() => {deleteSubfilm(user._id,film.filmId);notifyCancel()}} className='close'><i class="bi bi-x-lg"></i></button>
                 
             
             </div>
@@ -48,6 +53,7 @@ const Subcribe = () => {
     console.log(subfilm);
     return (
         <div className="d-flex justify-content-center">
+        <ToastContainer></ToastContainer>
         <div className="container-fix p-3">
             <div className="card bg card-height">
                     <div className="card-header">Phim đã đăng ký</div>

@@ -40,14 +40,14 @@ const InfoFilm = () => {
 
     useEffect(() => {
         getFilm(id)
-        console.log(film)
+        // console.log(film)
         return () =>{
             if(user !== null)
             {
                 
                 if(film !== null){
-                    console.log(subfilm)
-                    console.log(film.film)
+                    // console.log(subfilm)
+                    // console.log(film.film)
                     getSubfilm(user._id)
                     subfilm.forEach(filmsub =>{
                         if(filmsub.filmId === film.film._id){
@@ -57,7 +57,7 @@ const InfoFilm = () => {
                 }
             
             }
-            console.log(subcribe)  
+            // console.log(subcribe)  
             }  
         
     },[])
@@ -65,10 +65,10 @@ const InfoFilm = () => {
     const notify = () => toast("Đã theo dõi thành công");
     const notifyCancel = () => toast("Đã bỏ theo dõi")
 
-    // useEffect(() => {
-    //     if(ratingNum!== 0)
-    //         setRatingEverage(ratingSum/ratingNum)
-    // }, [ratingNum,ratingSum])
+    useEffect(() => {
+        if(ratingNum!== 0)
+            setRatingEverage(ratingSum/ratingNum)
+    }, [ratingNum,ratingSum])
 
 
     return (

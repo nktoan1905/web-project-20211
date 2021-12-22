@@ -1,21 +1,25 @@
-import React,{useContext,useEffect} from 'react';
+import React,{useContext,useEffect,useState} from 'react';
 import './style.css';
 import { FilmContext } from '../../../../components/contexts/FilmContext';
-
+import ReactPaginate from "react-paginate";
 function ListFilm(props) {
   const {filmState:{films},getFilms} = useContext(FilmContext)
   useEffect(() => getFilms(), [])
-  console.log(films)
-  return (
-    <div className="movie-list">
-    {films.map(film => (
+  const [pageNumber, setPageNumber] = useState(0);
+
+  const filmsPerPage = 3;
+  const pagesVisited = pageNumber * filmsPerPage;
+
+    const display = films
+    .slice(pagesVisited, pagesVisited + filmsPerPage)
+    .map(film => (
       
       <div key={film._id} className="movie-item">
         <a
           href={`/film/${film._id}`}
         >
           <div className="episode-latest">
-            <span>6/??</span>
+            <span>??/{film.numOfep}</span>
           </div>
           <div>
             <img src={film.image} alt={film.title} />
@@ -25,8 +29,39 @@ function ListFilm(props) {
         </a>
       </div>
     
-    ))}
-    </div>
+    ))
+
+  // const pageCount = Math.ceil(films.length / filmsPerPage);
+  const pageCount = Math.ceil(films.length / filmsPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
+  //
+ 
+  console.log(films)
+  return (
+    <>
+      <div className="movie-list">
+              {display}
+      </div>
+      <div className='mt-5'>
+        <ReactPaginate
+            previousLabel={"Trước"}
+            nextLabel={"Sau"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"paginationBttns"}
+            previousLinkClassName={"previousBttn"}
+            nextLinkClassName={"nextBttn"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"paginationActive"}
+        />
+      </div>
+    </>
+    
+    
     
   );
 }

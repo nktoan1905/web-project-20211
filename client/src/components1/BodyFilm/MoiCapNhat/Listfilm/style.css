@@ -6,7 +6,7 @@
     box-sizing: border-box;
     position: relative;
     border: 2px solid #404040;
-    display: block;
+    display: inline-block;
 }
 
 a {
@@ -82,3 +82,43 @@ a:hover {
     border-radius: 10px;
     box-sizing: border-box;
 }
+
+.paginationBttns {
+    width: 80%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+.paginationBttns a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    color: #e5e6f0;
+    background-color: #404040;
+    cursor: pointer;
+  }
+  
+  .paginationBttns a:hover {
+    color: white;
+    background-color: #6b6b6d;
+  }
+  
+  .paginationActive a {
+    color: white;
+    background-color: #a7a7b9;
+  }
+  
+  .paginationDisabled a {
+    color: white;
+    background-color: grey!important;
+  }
+
+  a.nextBttn{
+    background-color: #383838;
+  }
+
+  a.previousBttn{
+      background-color: #383838;
+  }

@@ -9,7 +9,7 @@ function BodyFilm() {
       <div className='container-fix'>
         <DeCu />
         <NewUpdate />
-        <Page />
+        
       </div>
 
     </div>
