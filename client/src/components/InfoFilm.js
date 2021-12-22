@@ -27,7 +27,7 @@ const InfoFilm = () => {
 
     useEffect(() => getFilm(id),[])
     
-    const notify = () => toast("Đã đăng ký thành công");
+    const notify = () => toast("Đã theo dõi thành công");
  
 
     useEffect(() => {
@@ -37,7 +37,6 @@ const InfoFilm = () => {
 
 
     return (
-        <>
         <div className="d-flex justify-content-center">
             <ToastContainer />
                {filmsLoading &&
@@ -160,8 +159,6 @@ const InfoFilm = () => {
             }
             
         </div>
-        </>
-    
     )
 }
 
