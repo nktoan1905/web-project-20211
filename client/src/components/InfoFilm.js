@@ -10,7 +10,7 @@ import Comments from "./comments/Comments";
 import Rating from './Rating';
 import Player from './Player';
 const InfoFilm = () => {
-    const {addSubfilm} = useContext(SubfilmContext)
+    const {subfilmState:{subfilm},addSubfilm,getSubfilm,deleteSubfilm} = useContext(SubfilmContext)
     const {authState: {isAuthenticated,user}} = useContext(AuthContext)
     const {filmState:{film,filmsLoading},getFilm} = useContext(FilmContext)
     let {id}  = useParams();
@@ -18,22 +18,57 @@ const InfoFilm = () => {
     const [ratingNum,setRatingNum] = useState(0);
     const [ratingSum,setRatingSum] = useState(0);
     const [ratingEverage,setRatingEverage] = useState(0);
-    
+    const [subcribe,setSubcribe] = useState(false)    
+
+
     const handleChange = (value) => {
         setRating(value);
         setRatingNum(ratingNum+1)
         setRatingSum(ratingSum + value)   
     }
 
-    useEffect(() => getFilm(id),[])
+    // useEffect(() => {getFilm(id)},[])
     
-    const notify = () => toast("Đã theo dõi thành công");
- 
+    const handleSubcribe = () =>{
+        getSubfilm(user._id)
+            subfilm.forEach(filmsub =>{
+                if(filmsub.filmId === film.film._id){
+                    setSubcribe(true)
+            }
+        })
+    }
 
     useEffect(() => {
-        if(ratingNum!== 0)
-            setRatingEverage(ratingSum/ratingNum)
-    }, [ratingNum,ratingSum])
+        getFilm(id)
+        console.log(film)
+        return () =>{
+            if(user !== null)
+            {
+                
+                if(film !== null){
+                    console.log(subfilm)
+                    console.log(film.film)
+                    getSubfilm(user._id)
+                    subfilm.forEach(filmsub =>{
+                        if(filmsub.filmId === film.film._id){
+                            setSubcribe(true)
+                        }
+                    })
+                }
+            
+            }
+            console.log(subcribe)  
+            }  
+        
+    },[])
+
+    const notify = () => toast("Đã theo dõi thành công");
+    const notifyCancel = () => toast("Đã bỏ theo dõi")
+
+    // useEffect(() => {
+    //     if(ratingNum!== 0)
+    //         setRatingEverage(ratingSum/ratingNum)
+    // }, [ratingNum,ratingSum])
 
 
     return (
@@ -82,13 +117,13 @@ const InfoFilm = () => {
                                 <li className="list-group-item-fix">
                                     <div className="row">
                                         <div className="col-4">Phát hành</div>
-                                        <div className="col-8 text-center">{film.film.status}</div>
+                                        <div className="col-8 text-center">{film.film.year}</div>
                                     </div>
                                 </li>
                                 <li className="list-group-item-fix">
                                     <div className="row">
                                         <div className="col-4">Thời lượng</div>
-                                        <div className="col-8 text-center">12</div>
+                                        <div className="col-8 text-center">{film.film.numOfep}</div>
                                     </div>
                                 </li>
                             </ul>
@@ -104,11 +139,17 @@ const InfoFilm = () => {
                             <li className="nav-item me-1">
                                 <button type="button" className="btn btn-play" ><i className="bi bi-play-circle fs-4"></i></button>
                             </li>
-                            {isAuthenticated &&
+                            {isAuthenticated && !subcribe &&
                             <li className="nav-item">
-                                <button onClick={()=>{addSubfilm(user._id,film.film._id,film.film.title,film.film.image,film.film.point,12);notify()}} type="button" className="btn btn-book"><i className="bi bi-clipboard-plus fs-4"></i></button>
+                                <button onClick={()=>{addSubfilm(user._id,film.film._id,film.film.title,film.film.image,film.film.point,12);notify();setSubcribe(true)}} type="button" className="btn btn-book"><i className="bi bi-clipboard-plus fs-4"></i></button>
                                 
                             </li>
+                            }
+                            {subcribe &&
+                                <li className="nav-item">
+                                    <button onClick={()=>{deleteSubfilm(user._id,film.film._id);notifyCancel();setSubcribe(false)}} type="button" className="btn btn-book"><i class="bi bi-folder-minus fs-4"></i></button>
+                                                            
+                                </li> 
                             }
                             <li className="nav-item ms-auto">
                                 <button type="button" className="btn btn-star" data-bs-toggle="modal" data-bs-target="#exampleModal"><i className="bi bi-star fs-4"></i></button>

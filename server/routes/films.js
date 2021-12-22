@@ -31,16 +31,16 @@ router.get('/byId/:id', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-	const { title, description, category,image, point,reviewerNum,status} = req.body
+	const { title, description, category,image, point,reviewerNum,year,numOfep} = req.body
 
-	if (!title || !description || !category || !image ||!status)
+	if (!title || !description || !category || !image ||!year ||!numOfep)
 		return res
 			.status(400)
 			.json({ success: false, message: 'Required' })
 
 	try {
 		const newFilm = new Film({
-			title, description, category,image, point,reviewerNum,status
+			title, description, category,image, point,reviewerNum,year,numOfep
 		})
 
 		await newFilm.save()

@@ -27,7 +27,8 @@ Content-Type: application/json
     "image":"https://animehay.club/upload/poster/3353-1633233301.jpg",
     "point":0,
     "reviewerNum":0,
-    "status":"2021"
+    "year":"2021",
+    "numOfep":12
 
 }
 

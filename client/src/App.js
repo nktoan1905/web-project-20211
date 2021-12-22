@@ -15,26 +15,26 @@ import SubfilmContextProvider from './components/contexts/SubFilmContext';
 function App() {
   return (
       <AuthContextProvider>
-      <FilmContextProvider>
-        <CommentContextProvider>
-          <SubfilmContextProvider>
-            <BrowserRouter>
-                  <div className="landing">
-                      <Header></Header>
-                      <Routes>
-                          <Route exact path="/" element={<BodyFilm />} />
-                          <Route exact path="/loc-phim" element={<Locphim />} />
-                          <Route exact path='/film/:id' element={<InfoFilm/>}/>
-                          <Route exact path='/login' element={<Auth authRoute='login'/>}/>
-                          <Route exact path='/register' element={<Auth authRoute='register'/>}/>
-                          <Route exact path='/subcribe' element={<Subcribe/>}/>
-                      </Routes>
-                      <Footer/>
-                  </div>
-              </BrowserRouter>
-          </SubfilmContextProvider>
-        </CommentContextProvider>
-      </FilmContextProvider>
+        <SubfilmContextProvider>
+          <FilmContextProvider>
+            <CommentContextProvider>
+              <BrowserRouter>
+                    <div className="landing">
+                        <Header></Header>
+                        <Routes>
+                            <Route exact path="/" element={<BodyFilm />} />
+                            <Route exact path="/loc-phim" element={<Locphim />} />
+                            <Route exact path='/film/:id' element={<InfoFilm/>}/>
+                            <Route exact path='/login' element={<Auth authRoute='login'/>}/>
+                            <Route exact path='/register' element={<Auth authRoute='register'/>}/>
+                            <Route exact path='/subcribe' element={<Subcribe/>}/>
+                        </Routes>
+                        <Footer/>
+                    </div>
+                </BrowserRouter>
+          </CommentContextProvider>
+        </FilmContextProvider>
+      </SubfilmContextProvider>
     </AuthContextProvider>
   );
 }
