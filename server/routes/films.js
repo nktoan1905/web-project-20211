@@ -78,16 +78,16 @@ router.post('/byId/:id', async (req, res) => {
 
 
 router.put('/:id', async (req, res) => {
-	const { title, description, category,image, point,reviewerNum,status} = req.body
+	const { title, description, category,image, point,reviewerNum,year,numOfep} = req.body
 
-	if (!title || !description || !category || !image ||!status)
+	if (!title || !description || !category || !image ||!year ||!numOfep)
 		return res
 			.status(400)
 			.json({ success: false, message: 'Required' })
 
 	try {
 		let updatedFilm = {
-			title, description, category,image, point,reviewerNum,status
+			title, description, category,image, point,reviewerNum,year,numOfep
 		}
 
 		updatedFilm = await Film.findOneAndUpdate({_id:req.params.id},updatedFilm,{new:true})
