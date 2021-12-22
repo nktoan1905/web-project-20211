@@ -1,29 +1,34 @@
 import {useState,useEffect,useContext} from 'react'
 import { useParams } from 'react-router-dom';
 import { FilmContext } from './contexts/FilmContext';
-
+import { SubfilmContext } from './contexts/SubFilmContext';
 import { AuthContext } from './contexts/AuthContext';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Comments from "./comments/Comments";
 import Rating from './Rating';
 import Player from './Player';
 const InfoFilm = () => {
+    const {addSubfilm} = useContext(SubfilmContext)
     const {authState: {isAuthenticated,user}} = useContext(AuthContext)
-    const {filmState:{film},getFilm} = useContext(FilmContext)
+    const {filmState:{film,filmsLoading},getFilm} = useContext(FilmContext)
     let {id}  = useParams();
     const [rating, setRating] = useState(0);
     const [ratingNum,setRatingNum] = useState(0);
     const [ratingSum,setRatingSum] = useState(0);
     const [ratingEverage,setRatingEverage] = useState(0);
+    
     const handleChange = (value) => {
         setRating(value);
         setRatingNum(ratingNum+1)
         setRatingSum(ratingSum + value)   
     }
 
-    useEffect(() => getFilm(id),[film,id,getFilm])
+    useEffect(() => getFilm(id),[])
     
-
+    const notify = () => toast("Đã đăng ký thành công");
+ 
 
     useEffect(() => {
         if(ratingNum!== 0)
@@ -32,7 +37,17 @@ const InfoFilm = () => {
 
 
     return (
+        <>
         <div className="d-flex justify-content-center">
+            <ToastContainer />
+               {filmsLoading &&
+        
+                    <div className='d-flex justify-content-center mt-2'>
+                        <div className="spinner-border text-danger" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                }
             {film !== null && film.film !== null &&
             <div className="container-fix p-3">
                 <div className="card bg">
@@ -90,9 +105,12 @@ const InfoFilm = () => {
                             <li className="nav-item me-1">
                                 <button type="button" className="btn btn-play" ><i className="bi bi-play-circle fs-4"></i></button>
                             </li>
+                            {isAuthenticated &&
                             <li className="nav-item">
-                                <button type="button" className="btn btn-book"><i className="bi bi-clipboard-plus fs-4"></i></button>
+                                <button onClick={()=>{addSubfilm(user._id,film.film._id,film.film.title,film.film.image,film.film.point,12);notify()}} type="button" className="btn btn-book"><i className="bi bi-clipboard-plus fs-4"></i></button>
+                                
                             </li>
+                            }
                             <li className="nav-item ms-auto">
                                 <button type="button" className="btn btn-star" data-bs-toggle="modal" data-bs-target="#exampleModal"><i className="bi bi-star fs-4"></i></button>
                             </li>
@@ -140,7 +158,9 @@ const InfoFilm = () => {
                 <Comments filmId={id} isAuthenticated={isAuthenticated} currentUser={user}/>
             </div>
             }
+            
         </div>
+        </>
     
     )
 }

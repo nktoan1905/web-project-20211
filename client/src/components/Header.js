@@ -1,9 +1,12 @@
 import { AuthContext } from './contexts/AuthContext'
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 const Header = () => {
     const {authState: {isAuthenticated,user},logoutUser} = useContext(AuthContext)
-
+    let navigate = useNavigate()
+    const goHome =() =>{
+        navigate('/')
+    }
     const logout = () => logoutUser()
     return (
         <div className="d-flex justify-content-center">
@@ -38,10 +41,15 @@ const Header = () => {
                                 </span>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><Link className="dropdown-item" to="/">{user.username}</Link></li>
-                                    <li><button onClick={logout} className="dropdown-item"><i class="bi bi-box-arrow-right"></i>{' '}Đăng xuất</button></li>
+                                    <li><button onClick={() => {logout();goHome()}} className="dropdown-item"><i class="bi bi-box-arrow-right"></i>{' '}Đăng xuất</button></li>
                                 </ul>
                             </li>
                             }
+                            <li className="nav-item">
+                                <a href='/subcribe'>
+                                    <div className="button-header"><i className="bi bi-file-plus"></i></div>
+                                </a>
+                            </li>
     
                         </ul>
                         

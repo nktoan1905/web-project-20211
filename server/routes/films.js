@@ -4,7 +4,8 @@ const verifyToken = require('../middleware/auth')
 
 const Film = require('../model/Film')
 const Episode = require('../model/Episode')
-
+const UserSub = require('../model/UserSub')
+const User = require('../model/User')
 router.get("/", async(req,res)=>{
     try{
         const films = await Film.find();
@@ -28,6 +29,7 @@ router.get('/byId/:id', async (req, res) => {
 	}
 })
 
+
 router.post('/', async (req, res) => {
 	const { title, description, category,image, point,reviewerNum,status} = req.body
 
@@ -50,6 +52,7 @@ router.post('/', async (req, res) => {
 	}
 })
 
+
 router.post('/byId/:id', async (req, res) => {
 	const { title, epNum, url} = req.body
     const film = await Film.findOne({_id:req.params.id});
@@ -71,6 +74,7 @@ router.post('/byId/:id', async (req, res) => {
 		res.status(500).json({ success: false, message: 'Internal server error' })
 	}
 })
+
 
 
 router.put('/:id', async (req, res) => {
@@ -112,5 +116,46 @@ router.delete('/:id',async(req,res)=>{
     }
 })
 
+
+router.post('/:userId',verifyToken,async(req,res) =>{
+    const { userId,filmId,title,image,point,numOfep} = req.body
+
+	try {
+		const newUserSub = new UserSub({
+            userId,
+            filmId,title,image,point,numOfep
+		})
+
+		await newUserSub.save()
+
+		res.json({ success: true, message: 'success!', UserSub: newUserSub })
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ success: false, message: 'Internal server error' })
+	}
+})
+
+router.get('/subcribe/:userId',async(req,res)=>{
+    try {
+        const userSub = await UserSub.find({userId:req.params.userId})
+        res.json({success:true, userSub})
+    } catch (error) {
+        console.log(error)
+		res.status(500).json({ success: false, message: 'Internal server error' })
+    }
+})
+
+router.delete('/subcribe/:userId/:filmId',verifyToken,async(req,res)=>{
+	try{
+        const deleteUsersub = await UserSub.findOneAndDelete( {userId: req.params.userId,filmId:req.params.filmId})
+        if(!deleteUsersub){
+            return res.status(401).json({success:false,message:'Not found or user not authorised'})
+        }
+        res.json({success:true,film:deleteUsersub})
+    } catch(error){
+        console.log(error)
+        res.status(500).json({success:false, message:'Internal server error'})
+    }
+})
 
 module.exports = router

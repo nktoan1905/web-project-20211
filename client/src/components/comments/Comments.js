@@ -6,7 +6,7 @@ import Comment from "./Comment";
 
 
 const Comments = ({ filmId, isAuthenticated, currentUser}) => {
-  const {commentState:{comments},getComments,addComment,deleteComment,updateComment} = useContext(CommentContext)
+  const {commentState:{comments,commentsLoading},getComments,addComment,deleteComment,updateComment} = useContext(CommentContext)
   const [activeComment, setActiveComment] = useState(null);
   const rootComments = comments.filter(
     (comment) => !comment.commentParentId && comment.film === filmId
@@ -24,7 +24,7 @@ const Comments = ({ filmId, isAuthenticated, currentUser}) => {
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
 
-  useEffect(() => getComments(filmId), [comments,filmId,getComments]);
+  useEffect(() => getComments(filmId), [comments]);
   
 
   let navigate = useNavigate();
@@ -39,9 +39,17 @@ const Comments = ({ filmId, isAuthenticated, currentUser}) => {
             <button onClick={() => navigate('/login')} className="btn btn-danger w-200">Đăng nhập để bình luận</button>
         </div>
       }
-      
+      {commentsLoading &&
+        
+        <div className='d-flex justify-content-center mt-2'>
+            <div className="spinner-border text-danger" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+        </div>
+      }
       {rootComments.map((rootComment) => (
           <Comment
+            commentsLoading={commentsLoading}
             filmId={filmId}
             key={rootComment._id}
             comment={rootComment}
@@ -52,6 +60,7 @@ const Comments = ({ filmId, isAuthenticated, currentUser}) => {
             deleteComment={deleteComment}
             updateComment={updateComment}
             currentUser={currentUser}
+            
           />
       ))}
     </div>

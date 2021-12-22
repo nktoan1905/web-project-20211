@@ -28,7 +28,7 @@ const CommentContextProvider = ({children}) =>{
 	
 	const addComment = async (commentBody,commentParentId,filmId) => {
 		try {
-			const response = await axios.post(`${apiUrl}/comments/${filmId}`, {commentBody,commentParentId})
+			const response = await axios.post(`${apiUrl}/films/${filmId}`, {commentBody,commentParentId})
 			if (response.data.success) {
 				dispatch({ type: 'ADD_COMMENT', payload: response.data.comment })
 				return response.data
@@ -73,7 +73,7 @@ const CommentContextProvider = ({children}) =>{
 		}
 	}
 
-	// Post context data
+	
 	const commentContextData = {
 		commentState,
 		getComments,

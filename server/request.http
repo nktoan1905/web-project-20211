@@ -12,7 +12,7 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "username":"gnourt123",
+    "username":"gnourt1234",
     "password":"1234"
 }
 
@@ -75,3 +75,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY
 ###
 DELETE  http://localhost:5000/api/comments/61862dbdd12fb95a00f0f28f
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY2I2NjA0YjE3NmNjMjQ4MDRlYTgiLCJpYXQiOjE2MzYxODMwMTh9.KwJ7NuyZU8t4MB8nvQZJzVKCQpm0TbEGsDy0gE_67Js
+
+###
+POST http://localhost:5000/api/films/617ccc6e88c3542cd618a1d3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY2M2ZTg4YzM1NDJjZDYxOGExZDMiLCJpYXQiOjE2NDAxMDAwMzZ9.d6DZU0_UihmdzAY13MOT56e12iLVzqPf5NAMjnU37wA
+
+{
+    "userId":"617ccc6e88c3542cd618a1d3",
+    "filmId":"61bdc490f43d62cd12d42851",
+    "title":"Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
+    "image":"https://animehay.club/upload/poster/3353-1633233301.jpg",
+    "point":0,
+    "numOfep":12
+}
+
+###
+GET http://localhost:5000/api/films/subcribe
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY2M2ZTg4YzM1NDJjZDYxOGExZDMiLCJpYXQiOjE2NDAwOTQ5OTZ9.a7VkiPi1i02eTRq9JxjaYBXDWdKvIT9VTIM76yyYkp0
+
+

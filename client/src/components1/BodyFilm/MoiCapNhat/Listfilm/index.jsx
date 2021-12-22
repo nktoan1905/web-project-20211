@@ -10,7 +10,7 @@ function ListFilm(props) {
     <div className="movie-list">
     {films.map(film => (
       
-      <div className="movie-item">
+      <div key={film._id} className="movie-item">
         <a
           href={`/film/${film._id}`}
         >

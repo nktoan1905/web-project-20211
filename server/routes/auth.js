@@ -6,6 +6,7 @@ const verifyToken = require('../middleware/auth')
 
 const User = require('../model/User')
 
+
 router.get('/',verifyToken, async(req,res)=>{
     try{
         const user = await User.findById(req.userId).select('-password')
@@ -18,6 +19,8 @@ router.get('/',verifyToken, async(req,res)=>{
         res.status(500).json({success:false, message:'Internal server error'})
     }
 })
+
+
 
 router.post('/register',async (req,res) =>{
     const {username,password} = req.body

@@ -255,3 +255,7 @@ span.ms-0.bg{
   background-color: #171717!important;
   border-radius: 0%;
 }
+
+.dropdown {
+  margin-right: -18px;
+}

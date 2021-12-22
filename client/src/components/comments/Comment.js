@@ -3,6 +3,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from 'react'
 
 const Comment = ({
+  commentsLoading,
   filmId,
   comment,
   replies,
@@ -32,6 +33,14 @@ const Comment = ({
   
   return (
     <div key={comment._id} className="card bg-comment mb-2">
+      {commentsLoading &&
+        
+        <div className='d-flex justify-content-center mt-2'>
+            <div className="spinner-border text-danger" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+        </div>
+      }
        <div className="card-body">
           <div className="row">
               <div className="col-1">
