@@ -1,12 +1,21 @@
 import { AuthContext } from './contexts/AuthContext'
-import { useContext } from 'react'
+import { useContext,useEffect } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
+import SearchBar from './view/SearchBar'
+import BookData from "./Data.json";
+import {FilmContext} from './contexts/FilmContext'
 const Header = () => {
     const {authState: {isAuthenticated,user},logoutUser} = useContext(AuthContext)
+    const {filmState:{films},getFilms} = useContext(FilmContext)
     let navigate = useNavigate()
     const goHome =() =>{
         navigate('/')
     }
+
+    useEffect(() => {
+        getFilms()
+      
+    }, [])
     const logout = () => logoutUser()
     return (
         <div className="d-flex justify-content-center">
@@ -22,10 +31,7 @@ const Header = () => {
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className='nav-item d-flex align-items-center'>
-                                <form class="ms-5 d-flex search-input">
-                                    <input className="form-control bg text-white" type="search" placeholder="Nhập từ khóa..." aria-label="Search"/>
-                                    <span type="submit" className="ms-0 bg"><i className="bi bi-search"></i></span>
-                                </form>
+                                <SearchBar placeholder="Nhập từ khóa..." data={films}></SearchBar> 
                             </li>
                             {!isAuthenticated &&
                             <li className="nav-item">
