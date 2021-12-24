@@ -33,6 +33,11 @@ const Header = () => {
                             <li className='nav-item d-flex align-items-center'>
                                 <SearchBar placeholder="Nhập từ khóa..." data={films}></SearchBar> 
                             </li>
+                            <li className="nav-item">
+                                <Link to='/filter'>
+                                    <div className="button-header"><i class="bi bi-list"></i></div>
+                                </Link>
+                            </li>
                             {!isAuthenticated &&
                             <li className="nav-item">
                                 <Link to='/login'>
@@ -56,7 +61,6 @@ const Header = () => {
                                     <div className="button-header"><i className="bi bi-file-plus"></i></div>
                                 </a>
                             </li>
-    
                         </ul>
                         
                         </div>

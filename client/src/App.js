@@ -12,6 +12,7 @@ import Header from "./components/Header";
 import CommentContextProvider from "./components/contexts/CommentContext";
 import Subcribe from './components/view/Subcribe';
 import SubfilmContextProvider from './components/contexts/SubFilmContext';
+import Filter from './components/view/Filter';
 function App() {
   return (
       <AuthContextProvider>
@@ -28,6 +29,7 @@ function App() {
                             <Route exact path='/login' element={<Auth authRoute='login'/>}/>
                             <Route exact path='/register' element={<Auth authRoute='register'/>}/>
                             <Route exact path='/subcribe' element={<Subcribe/>}/>
+                            <Route exact path='/filter' element={<Filter/>}/>
                         </Routes>
                         <Footer/>
                     </div>

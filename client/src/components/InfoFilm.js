@@ -74,17 +74,20 @@ const InfoFilm = () => {
     return (
         <div className="d-flex justify-content-center">
             <ToastContainer />
-               {filmsLoading &&
-        
-                    <div className='d-flex justify-content-center mt-2'>
-                        <div className="spinner-border text-danger" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
-                    </div>
-                }
-            {film !== null && film.film !== null &&
+            
             <div className="container-fix p-3">
+            {filmsLoading &&
+                        
+                    <div className='d-flex justify-content-center mt-2' style={{height:'100vh'}}>
+                            <div className="spinner-border text-danger"  role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                    </div>
+            }
+            {film !== null && film.film !== null &&<>
                 <div className="card bg">
+               
+
                     <div className="card-header text-center">
                        {film.film.title}
                     </div>
@@ -196,8 +199,9 @@ const InfoFilm = () => {
                     </div>
                 </div>
                 <Comments filmId={id} isAuthenticated={isAuthenticated} currentUser={user}/>
+            </>}
             </div>
-            }
+            
             
         </div>
     )

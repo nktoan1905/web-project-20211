@@ -38,13 +38,12 @@ function SearchBar({ placeholder, data }) {
             <i class="bi bi-search"></i>
           ) : (
             <span type="button"  onClick={clearInput}><i class="bi bi-x-lg"></i></span>
-            // <CloseIcon id="clearBtn" />
           )}
         </div>
       </div>
       {filteredData.length != 0 && (
         <div className="dataResult">
-          {filteredData.slice(0, 15).map((value, key) => {
+          {filteredData.slice(0, 6).map((value, key) => {
             return (
               <a className="dataItem" href={`/film/${value._id}`}>
                 <p>{value.title} </p>

@@ -42,12 +42,20 @@ Content-Type: application/json
     "url":"https://www.youtube.com/watch?v=q15y18-gD5g"
 }
 
+###
+POST http://localhost:5000/api/films/category/61c2ade19f3f493dd7d6b7a9
+Content-Type: application/json
+
+{
+    "name":"Giả tưởng"
+}
+
 
 ###
 GET http://localhost:5000/api/films
 
 ###
-GET http://localhost:5000/api/films/byId/61bdc490f43d62cd12d42851
+GET http://localhost:5000/api/films/byId/61c2ade19f3f493dd7d6b7a9
 
 
 ###
