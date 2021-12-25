@@ -2,8 +2,13 @@ import { AuthContext } from './contexts/AuthContext'
 import { useContext,useEffect } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import SearchBar from './view/SearchBar'
-import BookData from "./Data.json";
+import 'antd/dist/antd.css';
+import { Menu, Dropdown,Tabs } from 'antd';
 import {FilmContext} from './contexts/FilmContext'
+import {category,years} from '../../src/components/view/Datas'
+
+const { TabPane } = Tabs;
+
 const Header = () => {
     const {authState: {isAuthenticated,user},logoutUser} = useContext(AuthContext)
     const {filmState:{films},getFilms} = useContext(FilmContext)
@@ -16,6 +21,41 @@ const Header = () => {
         getFilms()
       
     }, [])
+
+    console.log(category);
+    const menu = (
+        <Menu>
+          <Tabs type="card">
+                <TabPane tab="Thể loại" key="1">
+                    <div className="d-flex flex-wrap tab-category">
+                        {category.map(element =>{
+                            return(
+                                <div key={element._id} className='tab-content'>
+                                    <a href={`/filter/category/${element.name}`}>{element.name}</a>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </TabPane>
+                <TabPane tab="Năm sản xuất" key="2">
+                    <div className="d-flex flex-wrap tab-category">
+                        {years.map(element =>{
+                            return(
+                                <div key={element._id} className='tab-content'>
+                                    <a href={`/filter/year/${element.name}`}>{element._id}</a>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </TabPane>
+                <TabPane tab="Lọc phim" key="3" >
+                    <a href='/filter'>
+                        <button className='btn btn-secondary'>Đi đến trang lọc phim</button>
+                    </a>
+                </TabPane>
+            </Tabs>
+        </Menu>
+    );
     const logout = () => logoutUser()
     return (
         <div className="d-flex justify-content-center">
@@ -33,11 +73,11 @@ const Header = () => {
                             <li className='nav-item d-flex align-items-center'>
                                 <SearchBar placeholder="Nhập từ khóa..." data={films}></SearchBar> 
                             </li>
-                            <li className="nav-item">
-                                <Link to='/filter'>
+                            <Dropdown overlay={menu} trigger={['click']} placement="bottomRight">
+                                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                                     <div className="button-header"><i class="bi bi-list"></i></div>
-                                </Link>
-                            </li>
+                                </a>
+                            </Dropdown>
                             {!isAuthenticated &&
                             <li className="nav-item">
                                 <Link to='/login'>

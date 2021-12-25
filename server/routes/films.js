@@ -34,22 +34,31 @@ router.get('/byId/:id', async (req, res) => {
 router.post('/getFilms',async(req,res) =>{
 	const {filters} = req.body
 	let findArgs = {}
-
+	
 	for (let key in filters) {
 
         if (filters[key].length > 0) {
             findArgs[key] = filters[key];
         }
     }
+	
 	try {
-		const films = await Category.find(findArgs)
+		const films = await Category.find({name:findArgs.category})
 		const list = films.map(film =>{
 			return film.film.toString()
 		})
 		
 		var condition = null
+	
 		if(Object.keys(findArgs).length !== 0){
-			condition = {_id:list}
+			if(findArgs.category && !findArgs.year)
+				condition = {_id:list}
+			else if (!findArgs.category && findArgs.year)
+				condition = {year: findArgs.year}
+			else
+				condition = {_id:list,year:findArgs.year}
+
+			
 		}
 		const listOfFilm = await Film.find(condition)
 		res.json({success:true,listOfFilm})

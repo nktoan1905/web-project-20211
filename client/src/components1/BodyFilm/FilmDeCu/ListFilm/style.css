@@ -1,12 +1,54 @@
 .listfilm {
     display: flex;
     overflow: hidden;
+    flex-wrap: wrap;
 }
 
-.listfilm > div {
-    width: 220px;
-    margin-right: 10px;
+@media screen {
+    .listfilm > div {
+        width: 20%;
+        
+    }
 }
+
+
+@media all and (max-width: 768px) {
+    .listfilm > div {
+        width: calc(100% / 3);
+        
+    }
+          
+}
+
+@media all and (max-width: 992px) {
+    .listfilm > div {
+        width: calc(100% / 4);
+        
+    }
+          
+}
+
+@media all and (max-width: 576px) {
+    .listfilm > div {
+        width: calc(100% / 2);
+        
+    }
+          
+}
+
+@media all and (max-width: 375px) {
+    .listfilm > div {
+        width: 100%;
+        
+    }
+    .listfilm div a div img {
+        width: 100%;
+        height: 350px!important;
+    }
+          
+}
+
+
 
 .listfilm  div a div {
     display: block;
@@ -14,7 +56,7 @@
 }
 
 .listfilm div a div img {
-    width: 220px;
+    width: 100%;
     height: 270px;
 }
 

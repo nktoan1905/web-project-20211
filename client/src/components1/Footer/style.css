@@ -10,6 +10,15 @@
     justify-content: space-between;
 }
 
-.footer img {
-    width: 200px;
+
+@media screen {
+    .footer img {
+        width: 200px;
+    }    
+}
+
+@media  all and (max-width: 768px) {
+    .footer img {
+        width: 100px;
+    }  
 }

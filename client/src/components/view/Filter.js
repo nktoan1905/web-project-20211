@@ -1,15 +1,19 @@
 import {useState,useEffect} from 'react'
 import CheckBox from './CheckBox'
-import { category } from './Datas'
+import { category,years } from './Datas'
 import axios from 'axios'
 import { apiUrl } from '../contexts/constants'
 import { FilmContext } from '../contexts/FilmContext'
 import '../../components1/BodyFilm/MoiCapNhat/Listfilm/style.css'
 import ReactPaginate from 'react-paginate'
+import { useParams } from 'react-router-dom'
 const Filter = () => {
+    let {id,follow} = useParams()
+    console.log(id);
     const [films,setFilms] = useState([])
     const [Filters, setFilters] = useState({
-        name: [],
+        category: [],
+        year:[],
     })
 
     const [pageNumber, setPageNumber] = useState(0);
@@ -26,7 +30,15 @@ const Filter = () => {
     }
 
     useEffect(() => {
-        getFilms([])
+        if(id){
+            if(follow === "category")
+                getFilms({category:[id]})
+            else
+                getFilms({year:[id]})
+        }else{
+            getFilms([])
+        }
+        
     },[])
 
     const showFilteredResults = (filters) => {
@@ -82,10 +94,11 @@ const Filter = () => {
             <div className='container-fix p-3'>
                 <div class="card" style={{backgroundColor : 'black', width:'150px'}}>
                     <div class="card-header">
-                        Trang lọc phim
+                        {id ? "Phim "+ id :"Trang lọc phim"}
                     </div>
                 </div>
-                <CheckBox list={category} handleFilters={filters => handleFilters(filters, 'name')}></CheckBox>
+                <CheckBox title={"Thể loại"} list={category} handleFilters={filters => handleFilters(filters, 'category')}></CheckBox>
+                <CheckBox title={"Năm sản xuất"} list={years} handleFilters={filters => handleFilters(filters, 'year')}></CheckBox>
                 
                 <div className="movie-list">
                     {films.length === 0 ?

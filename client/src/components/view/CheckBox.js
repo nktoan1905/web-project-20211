@@ -42,7 +42,7 @@ const CheckBox = (props) => {
     return (
         <div className='mt-3 mb-3' >
             <Collapse accordion >   
-                <Panel header="Thể loại" key="1" >
+                <Panel header={props.title} key="1" >
                     {renderCheckboxLists()}
                 </Panel>
                      

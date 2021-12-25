@@ -30,6 +30,7 @@ function App() {
                             <Route exact path='/register' element={<Auth authRoute='register'/>}/>
                             <Route exact path='/subcribe' element={<Subcribe/>}/>
                             <Route exact path='/filter' element={<Filter/>}/>
+                            <Route exact path='/filter/:follow/:id' element={<Filter/>}/>
                         </Routes>
                         <Footer/>
                     </div>
