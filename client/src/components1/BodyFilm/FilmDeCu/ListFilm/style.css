@@ -4,6 +4,14 @@
     flex-wrap: wrap;
 }
 
+.wrap {
+    background: #404040;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
 @media screen {
     .listfilm > div {
         width: 20%;
@@ -56,7 +64,7 @@
 }
 
 .listfilm div a div img {
-    width: 100%;
+    width: 220px;
     height: 270px;
 }
 
@@ -73,8 +81,8 @@ a {
         rgb(25 25 25 / 50%) 28%,
         rgb(37 37 37 / 0%) 78%
       );
-    bottom: 2px;
-    width: 100%;
+    bottom: 0px;
+    width: 220px;
     text-align: center;
     color: #fff;
     padding: 10px;
@@ -94,4 +102,8 @@ a {
     border-radius: 10%;
     padding: 5px 10px;
     display: block;
+}
+
+.listfilm > div {
+    width: 100%;
 }

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Page from '../Pagination';
 import ListFilm from './ListFilm';
 import Condition from './LocDk';
 import NavTitle from './NavTitle';
@@ -59,7 +58,6 @@ function Locphim(props) {
       />
       <Condition bien={navChange} bien1={navChange1} bien2={navChange2} bien3={navTT} />
       <ListFilm />
-      <Page />
     </div>
   );
 }

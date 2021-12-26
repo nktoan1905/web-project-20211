@@ -21,25 +21,25 @@ POST http://localhost:5000/api/films
 Content-Type: application/json
 
 {
-    "title":"Mushoku Tensei: Isekai Ittara Honki Dasu",
-    "description":"Mình sẽ sống nghiêm túc tại thế giới này!Một ông chú fap sư 34 tuổi, thất nghiệp, làm NEET là chính.Ngay sau khi chú ta bị đá ra khỏi nhà vào cái ngày đưa tang song thân phụ mẫu, truck-kun chào đón chú ta và tiễn về thế giới khác.Khi giật mình tỉnh giấc chú ta nhận ra bản thân đã đầu thai thành đứa bé sống trong thế giới của Kiếm và Ma pháp.",
-    "category":"Anime Hành động Giả tưởng Mecha",
-    "image":"https://animehay.club/upload/poster/3165.jpg",
+    "title":"Vào Ma Giới Rồi Đấy! Iruma-kun",
+    "description":"Vào Ma Giới Rồi Đấy! Iruma-kun vietsub | Mairimashita! Iruma-kun vietsub | Welcome to Demon School! Iruma-kun vietsub| Iruma Giá Đáo vietsub: Câu chuyện về cậu bé Suzuki Iruma đáng thương, 14 tuổi bị cha mẹ mình bán cho Ác Ma. Bị mang về ma giới, Iruma được Hiệu Trưởng của trường học Ác Ma nhận làm cháu trai và cho cậu nhập học ở trường học đó. Sẽ rất nguy hiểm nếu bị phát hiện là con người, một nhân loại nhỏ bé làm thế nào để tồn tại ở ma giới đây? Cuộc sống bi hài của Iruma bắt đầu.",
+    "category":"Hài hước Thần thoại",
+    "image":"https://photos.animetvn.tv/upload/film/113068.jpg",
     "point":0,
     "reviewerNum":0,
     "year":"2021",
-    "numOfep":23
+    "numOfep":21
 
 }
 
 ###
-POST http://localhost:5000/api/films/byId/61c2ade19f3f493dd7d6b7a9
+POST http://localhost:5000/api/films/byId/61c71f12fec450c4a757974c
 Content-Type: application/json
 
 {
-    "title":"1",
-    "epNum":1,
-    "url":"https://www.youtube.com/watch?v=q15y18-gD5g"
+    "title":"21",
+    "epNum":21,
+    "url":"https://www.youtube.com/watch?v=JT7Eeb1a-s8"
 }
 
 ###
