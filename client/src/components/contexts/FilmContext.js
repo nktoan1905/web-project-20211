@@ -71,13 +71,11 @@ const FilmContextProvider = ({ children }) => {
 	// Update film
 	const updateFilm = async updatedfilm => {
 		try {
-			const response = await axios.put(
-				`${apiUrl}/${updatedfilm._id}`,
-				updatedfilm
-			)
+			const response = await axios.put(`${apiUrl}/films/${updatedfilm._id}`,updatedfilm)
+			console.log(response.data);
 			if (response.data.success) {
 				dispatch({ type: 'UPDATE_FILM', payload: response.data.film })
-				return response.data
+				return response.data.message
 			}
 		} catch (error) {
 			return error.response.data

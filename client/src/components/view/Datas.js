@@ -30,6 +30,10 @@ export const category = [
     {
         "_id": "Đời thường",
         "name": "Đời thường"
+    },
+    {
+        "_id":"Bi kịch",
+        "name":"Bi kịch"
     }
 ]
 

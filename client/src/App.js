@@ -1,18 +1,16 @@
 import './App.css';
-import Footer from './components1/Footer/index.jsx'
-import BodyFilm from './components1/BodyFilm/index.jsx';
-import Locphim from './components1/BodyFilm/FilterFilm/index.jsx';
-import InfoFilm from "./components/InfoFilm";
+import Footer from './components/Footer/index.jsx'
+import BodyFilm from './components/view/BodyFilm/index.jsx';
+import InfoFilm from "./components/view/Film/InfoFilm";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import './App.css'
-import Auth from "./components/view/Auth";
+import Auth from "./components/view/Auth/Auth";
 import AuthContextProvider from "./components/contexts/AuthContext";
 import FilmContextProvider from "./components/contexts/FilmContext";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import CommentContextProvider from "./components/contexts/CommentContext";
-import Subcribe from './components/view/Subcribe';
+import Subcribe from './components/view/Film/Subcribe';
 import SubfilmContextProvider from './components/contexts/SubFilmContext';
-import Filter from './components/view/Filter';
+import Filter from './components/view/Film/Filter';
 function App() {
   return (
       <AuthContextProvider>
@@ -24,7 +22,6 @@ function App() {
                         <Header></Header>
                         <Routes>
                             <Route exact path="/" element={<BodyFilm />} />
-                            <Route exact path="/loc-phim" element={<Locphim />} />
                             <Route exact path='/film/:id' element={<InfoFilm/>}/>
                             <Route exact path='/login' element={<Auth authRoute='login'/>}/>
                             <Route exact path='/register' element={<Auth authRoute='register'/>}/>

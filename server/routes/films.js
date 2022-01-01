@@ -114,28 +114,6 @@ router.post('/byId/:id', async (req, res) => {
 	}
 })
 
-
-// router.post('/category/:id', async (req, res) => {
-// 	const { category,filmId,title,image,point,numOfep} = req.body
-// 	if (!category|| !filmId|| !title|| !image || !numOfep)
-// 		return res
-// 			.status(400)
-// 			.json({ success: false, message: 'Required' })
-
-// 	try {
-// 		const newFilmCategory = new FilmCategory({
-// 			category,filmId,title,image,point,numOfep
-// 		})
-
-// 		await newFilmCategory.save()
-
-// 		res.json({ success: true, message: 'success', filmCategory: newFilmCategory })
-// 	} catch (error) {
-// 		console.log(error)
-// 		res.status(500).json({ success: false, message: 'Internal server error' })
-// 	}
-// })
-
 router.post('/category/:id', async (req, res) => {
 	const film = await Film.findOne({_id:req.params.id});
 	const { name} = req.body
