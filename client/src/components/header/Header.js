@@ -3,9 +3,10 @@ import { useContext,useEffect } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import SearchBar from '../view/Search/SearchBar'
 import 'antd/dist/antd.css';
-import { Menu, Dropdown,Tabs } from 'antd';
+import { Menu, Dropdown,Tabs, Avatar, Image } from 'antd';
 import {FilmContext} from '../contexts/FilmContext'
 import {category,years} from '../view/Datas'
+import { UserOutlined } from '@ant-design/icons';
 
 const { TabPane } = Tabs;
 
@@ -80,19 +81,20 @@ const Header = () => {
                             </Dropdown>
                             {!isAuthenticated &&
                             <li className="nav-item">
-                                <Link to='/login'>
+                                <a href='/login'>
                                     <div className="button-header"><i className="bi bi-box-arrow-in-right"></i></div>
-                                </Link>
+                                </a>
                             </li>
                             }
                             {isAuthenticated &&
                             <li class="nav-item dropdown">
-                                <span className="dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                                <span role="button" data-bs-toggle="dropdown">
                                     <div className="button-header"><i class="bi bi-person-circle"></i></div>
                                 </span>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><Link className="dropdown-item" to="/">{user.username}</Link></li>
-                                    <li><button onClick={() => {logout();goHome()}} className="dropdown-item"><i class="bi bi-box-arrow-right"></i>{' '}Đăng xuất</button></li>
+                                    <li className='text-center'><Avatar size={{xs: 24,sm: 32,md: 40,lg: 64,xl: 80,xxl: 100,}} src={user.avatar} icon={<UserOutlined />}/></li>
+                                    <li className='text-center'><Link className="dropdown-item" to="/">{user.username}</Link></li>
+                                    <li className='text-center'><button onClick={() => {logout();goHome()}} className="dropdown-item"><i class="bi bi-box-arrow-right"></i>{' '}Đăng xuất</button></li>
                                 </ul>
                             </li>
                             }

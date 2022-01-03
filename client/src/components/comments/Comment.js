@@ -1,7 +1,8 @@
 import CommentForm from "./CommentForm";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from 'react'
-
+import { Avatar } from "antd";
+import { UserOutlined } from '@ant-design/icons';
 const Comment = ({
   commentsLoading,
   filmId,
@@ -43,12 +44,13 @@ const Comment = ({
       }
        <div className="card-body">
           <div className="row">
-              <div className="col-1">
+              <div className="col-md-1 col-2">
               <div className="comment-image-container">
-                <img alt="avatar" className="w-50" src="https://lh3.googleusercontent.com/a-/AOh14GgYki16FLPojAOXGZnJ9qOTFJGGS0or2SELiCSN=s96-c"/>
+                <Avatar size={100} src={comment.avatar} icon={<UserOutlined />}/>
+                
               </div>
               </div>
-              <div className="col-10">
+              <div className="ms-5 col-md-10 col-8">
                 <div className="comment-content">
                   <div className="comment-author">{comment.username}</div>
                   <div>{date.toLocaleDateString()}{' '}{date.toLocaleTimeString()}</div>

@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const {upload} = require('../helpers/filehelper');
 const argon2 = require('argon2')
 const jwt = require('jsonwebtoken')
 const verifyToken = require('../middleware/auth')
@@ -23,9 +24,9 @@ router.get('/',verifyToken, async(req,res)=>{
 
 
 router.post('/register',async (req,res) =>{
-    const {username,password} = req.body
+    const {username,password,avatar} = req.body
 
-    if(!username || !password){
+    if(!username || !password ){
         return res.status(400).json({success:false,message:'Missing username or password'})
     }
     try{
@@ -36,7 +37,7 @@ router.post('/register',async (req,res) =>{
         }
 
         const hashedPassword = await argon2.hash(password)
-        const newUser = new User ({username,password:hashedPassword})
+        const newUser = new User ({username,password:hashedPassword,avatar})
         await newUser.save()
 
         const accessToken = jwt.sign({userId: newUser._id},process.env.ACCESS_TOKEN_SECRET)

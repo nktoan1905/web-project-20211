@@ -9,6 +9,9 @@ const CommentSchema = new Schema({
     username:{
         type:String
     },
+    avatar:{
+        type:String
+    },
     commentBody:{
         type:String
     },

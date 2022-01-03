@@ -23,6 +23,7 @@ router.post('/:filmId', verifyToken, async (req, res) => {
     const film = await Film.findOne({_id:req.params.filmId})
 	const user = await User.findOne({_id:req.userId})
 	const username = user.username
+	const avatar = user.avatar
 	if (!commentBody)
 		return res
 			.status(400)
@@ -30,6 +31,7 @@ router.post('/:filmId', verifyToken, async (req, res) => {
 
 	try {
 		const newComment = new Comment({
+			avatar,
 			username,
 			user:req.userId,
             commentBody,
