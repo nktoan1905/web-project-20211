@@ -1,0 +1,7 @@
+.form-search{
+    position: relative;
+    padding-right: 5px;
+}
+.form-search .btn-submit{
+    float: right;
+}
