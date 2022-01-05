@@ -11,7 +11,7 @@ import {
   Paper,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -21,176 +21,41 @@ import FilmList from "../../components/FilmList";
 import FilmSearch from "../../components/FilmSearch/FilmSearch";
 import FilmSkeleton from "../../components/FilmSkeleton";
 import AddIcon from '@mui/icons-material/Add';
+import {apiUrl} from '../../../Constants/constants'
+import axios from 'axios'
 import "./styles.css";
 
 const ListFilmPage = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [filmsPerPage] = useState(12);
-  const films = [
-    {
-      id: 1,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 2,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 3,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 4,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 5,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 6,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 7,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 8,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 9,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 10,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 11,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 12,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 13,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 14,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 15,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 16,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 17,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 18,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 19,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 20,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 21,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 22,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 23,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 24,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 25,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 26,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-    {
-      id: 27,
-      title: "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
-      image: "https://animehay.club/upload/poster/3353-1633233301.jpg",
-      point: 3.6,
-    },
-  ];
+  const [films,setFilms] = useState([]);
+
+  const addFilm = async newfilm => {
+		try {
+			const response = await axios.post(`${apiUrl}/films`, newfilm)
+			if (response.data.success) {
+				setFilms([...films,response.data.film]) 
+				
+			}
+		} catch (error) {
+      console.log(error)
+		}
+	}
+
+  const getFilms = async () => {
+		try {
+			const response = await axios.get(`${apiUrl}/films`)
+			if (response.data.success) {
+				setFilms(response.data.films)
+			}
+		} catch (error) {
+			
+		}
+	}
+  useEffect(() => {
+    getFilms()
+  }, [])
   const indexOfLastFilm = currentPage * filmsPerPage;
   const indexOfFirstFilm = indexOfLastFilm - filmsPerPage;
   const currentFilms = films.slice(indexOfFirstFilm, indexOfLastFilm);
@@ -222,11 +87,15 @@ const ListFilmPage = () => {
       title: "",
       description: "",
       image: "",
+      year:"",
+      numOfep:"",
     },
     resolver: yupResolver(schema),
   });
   const handleSubmit = (values) => {
     console.log(values);
+    addFilm(values);
+    setOpen(false);
   };
   const [filters, setFilters] = useState([]);
   return (
@@ -291,6 +160,8 @@ const ListFilmPage = () => {
               spellCheck="false"
             />
             <InputField name="image" form={form} label="Image Link" />
+            <InputField type="number" name="year" form={form} label="Year" />
+            <InputField type="number" name="numOfep" form={form} label="Number of episode" />
           </DialogContent>
           <DialogActions>
             <Button type="submit" variant="contained" color="secondary">
