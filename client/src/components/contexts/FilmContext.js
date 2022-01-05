@@ -39,7 +39,7 @@ const FilmContextProvider = ({ children }) => {
 	// Add film
 	const addFilm = async newfilm => {
 		try {
-			const response = await axios.film(`${apiUrl}/films`, newfilm)
+			const response = await axios.post(`${apiUrl}/films`, newfilm)
 			if (response.data.success) {
 				dispatch({ type: 'ADD_FILM', payload: response.data.film })
 				return response.data

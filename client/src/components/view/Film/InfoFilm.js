@@ -116,7 +116,7 @@ const InfoFilm = () => {
                                         <div className="col-8 text-center">
                                             {film.categories && film.categories.map(cate => {
                                                 return(
-                                                    <><button className='btn btn-secondary btn-sm'><a href={`/filter/category/${cate.name}`}>{cate.name}</a></button>{' '}</>
+                                                    <><button className='btn btn-secondary btn-sm mb-1'><a href={`/filter/category/${cate.name}`}>{cate.name}</a></button>{' '}</>
                                                 )
                                             })}    
                                         </div>

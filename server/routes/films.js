@@ -70,16 +70,16 @@ router.post('/getFilms',async(req,res) =>{
 
 
 router.post('/', async (req, res) => {
-	const { title, description, category,image, point,reviewerNum,year,numOfep} = req.body
+	const { title, description, image, year,numOfep} = req.body
 
-	if (!title || !description || !category || !image ||!year ||!numOfep)
+	if (!title || !description || !image ||!year ||!numOfep)
 		return res
 			.status(400)
 			.json({ success: false, message: 'Required' })
 
 	try {
 		const newFilm = new Film({
-			title, description, category,image, point,reviewerNum,year,numOfep
+			title, description, image, point:0,reviewerNum:0,year,numOfep
 		})
 
 		await newFilm.save()

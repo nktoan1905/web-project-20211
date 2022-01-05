@@ -10,8 +10,7 @@ const FilmSchema = new Schema({
         type:String
     },
     category:{
-        type:String,
-        required:true
+        type:String
     },
     image:{
         type:String,
