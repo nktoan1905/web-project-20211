@@ -17,6 +17,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import ReactPlayer from "react-player";
 import InputField from "../../../../components/form-controls/InputFIelds";
 import FilmEpisodeFormEdit from "../FilmEpisodeFormEdit";
+import { apiUrl } from "../../../Constants/constants";
+import axios from "axios";
 const useStyles = makeStyles({
   root: {
     marginTop: "10px",
@@ -50,37 +52,44 @@ const useStyles = makeStyles({
 
 const FilmEpisodes = (props) => {
   const classes = useStyles();
-  const episodes = [
-    {
-      _id: "61c2ab96ab5c2f6940b5bf80",
-      title: "1",
-      epNum: 1,
-      url: "https://www.youtube.com/watch?v=i4r0VbB94u0",
-    },
-  ];
+  const episodes = props.episodes
+  const filmId = props.filmId
   const schema = yup.object().shape({
     title: yup.string().required("Please enter title"),
     url: yup
       .string()
       .required("Please enter real url")
       .matches(
-        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+        /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/,
         "Enter correct url!"
       ),
   });
-  const form = useForm({
-    defaultValues: {
-      title: "",
-      url: "",
-    },
-    resolver: yupResolver(schema),
-  });
+  const [episode,setEpisode] = useState(episodes)
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     _id: "",
     title: "",
     epNum: 0,
     url: "",
+  });
+
+  const addEpisode = async newEpisode => {
+		try {
+			const response = await axios.post(`${apiUrl}/films/byId/${filmId}`, newEpisode)
+			if (response.data.success) {
+				setEpisode([...episode,response.data.episode])
+			}
+		} catch (error) {
+      console.log(error)
+		}
+	}
+
+  const form = useForm({
+    defaultValues: {
+      title: data.title,
+      url: data.url,
+    },
+    resolver: yupResolver(schema),
   });
   const handleClickOpen = (value) => {
     setData(value);
@@ -90,12 +99,25 @@ const FilmEpisodes = (props) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const deleteEpisode = async(id)=>{
+    try {
+      const response = await axios.delete(`${apiUrl}/films/episode/${id}`)
+			if (response.data.success) {
+				setEpisode(episode.filter(ep => ep._id !== id))
+			}
+      setOpen(false);
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const handleSubmit = (values) => {
     const newEpisode = {
       title: values.title,
       epNum: episodes?.length + 1,
       url: values.url,
     };
+    addEpisode(newEpisode)
     console.log(newEpisode);
     form.reset();
   };
@@ -152,9 +174,10 @@ const FilmEpisodes = (props) => {
           List Episodes
         </Typography>
         <Grid container className={classes.listEpisodes}>
-          {episodes.map((value, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index} padding={"3px"}>
+          {episode.map((value, index) => (
+            <Grid key={value._id} item xs={12} sm={6} md={4} lg={3} key={index} padding={"3px"}>
               <Button
+                sx={{mr:10}}
                 variant="outlined"
                 fullWidth
                 onClick={() => handleClickOpen(value)}
@@ -170,12 +193,12 @@ const FilmEpisodes = (props) => {
         <DialogTitle
           className={classes.title}
         >{`Tập ${data.title}`}</DialogTitle>
-        <DialogContent lassName={classes.content}>
+        <DialogContent className={classes.content}>
           <ReactPlayer url={data.url} playIcon width={"100%"} />
           <FilmEpisodeFormEdit onSubmit={setData} episode={data} />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="secondary">
+          <Button onClick={()=>deleteEpisode(data._id)} color="secondary">
             Delete
           </Button>
           <Button onClick={handleClose}>Cancel</Button>

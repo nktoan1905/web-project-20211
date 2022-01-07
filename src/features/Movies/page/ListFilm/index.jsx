@@ -26,7 +26,7 @@ import axios from 'axios'
 import "./styles.css";
 
 const ListFilmPage = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [filmsPerPage] = useState(12);
   const [films,setFilms] = useState([]);
@@ -48,6 +48,7 @@ const ListFilmPage = () => {
 			const response = await axios.get(`${apiUrl}/films`)
 			if (response.data.success) {
 				setFilms(response.data.films)
+        setLoading(false)
 			}
 		} catch (error) {
 			

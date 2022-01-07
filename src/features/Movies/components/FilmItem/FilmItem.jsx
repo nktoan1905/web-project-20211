@@ -2,10 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
 import { Link } from "react-router-dom";
+import { apiUrl } from "../../../Constants/constants";
 const FilmItem = ({ film = [] }) => {
   return (
     <div className="film-item">
-      <Link to={`/films/${film.id}`}>
+      <Link to={`/films/${film._id}`}>
         <div className="header">
           <div className="img">
             <img src={film.image} alt={film.name} />

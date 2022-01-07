@@ -6,6 +6,7 @@ import InputField from "../../../components/form-controls/InputFIelds";
 import { Button, Box, Typography } from "@mui/material";
 
 const FilmEpisodeFormEdit = (props) => {
+  const data = props.episode
   const schema = yup.object().shape({
     title: yup.string(),
     url: yup
@@ -17,8 +18,8 @@ const FilmEpisodeFormEdit = (props) => {
   });
   const form = useForm({
     defaultValues: {
-      title: "",
-      url: "",
+      title: data.title,
+      url: data.url,
     },
     resolver: yupResolver(schema),
   });

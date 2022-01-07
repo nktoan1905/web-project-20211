@@ -21,3 +21,8 @@
     background-color: red;
     color: aliceblue;
 }
+
+
+.container-film-detail .btn-del{
+    bottom: -60px!important;
+}
