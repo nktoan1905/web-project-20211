@@ -189,3 +189,7 @@ a:hover {
   a.previousBttn{
       background-color: #383838;
   }
+
+  .slick-list {
+    height: 272px;
+  }

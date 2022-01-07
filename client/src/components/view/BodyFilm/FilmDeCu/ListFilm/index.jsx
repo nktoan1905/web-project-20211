@@ -7,7 +7,7 @@ import { FilmContext } from '../../../../contexts/FilmContext';
 
 function ListFilm(props) {
   const {
-    filmState: { films },
+    filmState: { films,filmsLoading },
   } = useContext(FilmContext);
 
   const newFilms = films.sort((b,a)=> a.point -b.point).slice(0,10);
@@ -26,7 +26,7 @@ function ListFilm(props) {
   };
 
   const display = newFilms.map((item) => (
-    <div style={{ width: '220px' }}>
+    <div key={item._id} style={{ width: '220px' }}>
       <a href={`/film/${item._id}`}>
         <div>
           <img src={item.image} alt={item.title} />
@@ -39,9 +39,17 @@ function ListFilm(props) {
 
   return (
     <div className="wrap">
-      <div className="listfilm">
+          {filmsLoading && 
+            <div className='d-flex justify-content-center mt-2' style={{height:'322px'}}>
+                <div className="spinner-border text-danger align-self-center"  role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+          }
+      {!filmsLoading && <div className="listfilm">
+
         <Slider {...settings}>{display}</Slider>
-      </div>
+      </div>}
       <div className="pagination"></div>
     </div>
   );

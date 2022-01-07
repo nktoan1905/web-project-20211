@@ -84,7 +84,7 @@ const InfoFilm = () => {
             {filmsLoading &&
                         
                     <div className='d-flex justify-content-center mt-2' style={{height:'100vh'}}>
-                            <div className="spinner-border text-danger"  role="status">
+                            <div className="spinner-border text-danger align-self-center"  role="status">
                                 <span className="visually-hidden">Loading...</span>
                             </div>
                     </div>
@@ -116,7 +116,7 @@ const InfoFilm = () => {
                                         <div className="col-8 text-center">
                                             {film.categories && film.categories.map(cate => {
                                                 return(
-                                                    <><button className='btn btn-secondary btn-sm mb-1'><a href={`/filter/category/${cate.name}`}>{cate.name}</a></button>{' '}</>
+                                                    <><button key={cate._id} className='btn btn-secondary btn-sm mb-1'><a href={`/filter/category/${cate.name}`}>{cate.name}</a></button>{' '}</>
                                                 )
                                             })}    
                                         </div>
@@ -177,6 +177,7 @@ const InfoFilm = () => {
                                     <button type="button" className="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body text-center">
+                                {isAuthenticated ?
                                 <Rating 
                                     count={10}
                                     size={40}
@@ -185,6 +186,8 @@ const InfoFilm = () => {
                                     inactiveColor={'#ddd'}
                                     onChange={handleChange}  
                                 />
+                                : <a href='/login' className="btn btn-danger w-200">Đăng nhập để đánh giá</a>
+                                }
                                 </div>
                             </div>
                         </div>

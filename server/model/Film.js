@@ -28,6 +28,10 @@ const FilmSchema = new Schema({
     },
     numOfep:{
         type:Number
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now
     }
     
 

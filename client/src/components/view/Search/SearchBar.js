@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
@@ -37,7 +36,7 @@ function SearchBar({ placeholder, data }) {
           {filteredData.length === 0 ? (
             <i class="bi bi-search"></i>
           ) : (
-            <span type="button"  onClick={clearInput}><i class="bi bi-x-lg"></i></span>
+            <span type="button"  onClick={clearInput}><i className="bi bi-x-lg"></i></span>
           )}
         </div>
       </div>
@@ -45,7 +44,7 @@ function SearchBar({ placeholder, data }) {
         <div className="dataResult">
           {filteredData.slice(0, 6).map((value, key) => {
             return (
-              <a className="dataItem" href={`/film/${value._id}`}>
+              <a key={value._id} className="dataItem" href={`/film/${value._id}`}>
                 <p>{value.title} </p>
               </a>
             );

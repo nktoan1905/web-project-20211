@@ -14,7 +14,12 @@ const Comments = ({ filmId, isAuthenticated, currentUser}) => {
     (b, a) =>
       new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
   );
+  const [noOfElement,setNoOfElement] = useState(4)
+  const loadMore = () =>{
+    setNoOfElement(noOfElement+noOfElement);
+  }
 
+  const slice = rootComments.slice(0,noOfElement)
   // console.log(rootComments);
   const getReplies = (commentId) =>
     comments
@@ -47,7 +52,7 @@ const Comments = ({ filmId, isAuthenticated, currentUser}) => {
             </div>
         </div>
       }
-      {rootComments.map((rootComment) => (
+      {slice.map((rootComment) => (
           <Comment
             commentsLoading={commentsLoading}
             filmId={filmId}
@@ -63,6 +68,7 @@ const Comments = ({ filmId, isAuthenticated, currentUser}) => {
             
           />
       ))}
+      {slice.length < rootComments.length ?<button className="btn btn-danger" onClick={()=>loadMore()}>Xem thêm</button>:""}
     </div>
   );
 };

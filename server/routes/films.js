@@ -107,12 +107,26 @@ router.post('/byId/:id', async (req, res) => {
 
 		await newEpisode.save()
 
-		res.json({ success: true, message: 'Happy learning!', episode: newEpisode })
+		res.json({ success: true, message: 'Succces!', episode: newEpisode })
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ success: false, message: 'Internal server error' })
 	}
 })
+
+router.delete('/episode/:id',async(req,res)=>{
+	try{
+        const deleteEpisode = await Episode.findOneAndDelete({_id: req.params.id})
+        if(!deleteEpisode){
+            return res.status(401).json({success:false,message:'Not found or user not authorised'})
+        }
+        res.json({success:true,episode:deleteEpisode})
+    } catch(error){
+        console.log(error)
+        res.status(500).json({success:false, message:'Internal server error'})
+    }
+})
+
 
 router.post('/category/:id', async (req, res) => {
 	const film = await Film.findOne({_id:req.params.id});
@@ -136,6 +150,18 @@ router.post('/category/:id', async (req, res) => {
 	}
 })
 
+router.delete('/category/:id', async(req,res)=>{
+	try{
+        const deleteCategory = await Category.findOneAndDelete({_id: req.params.id})
+        if(!deleteCategory){
+            return res.status(401).json({success:false,message:'Not found or user not authorised'})
+        }
+        res.json({success:true,category:deleteCategory})
+    } catch(error){
+        console.log(error)
+        res.status(500).json({success:false, message:'Internal server error'})
+    }
+})
 
 
 router.put('/:id', async (req, res) => {
@@ -167,8 +193,10 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id',async(req,res)=>{
     try{
         const deleteFilm = await Film.findOneAndDelete( {_id: req.params.id})
+		const deleteEpisode = await Episode.deleteMany({film:req.params.id})
+		const deleteCategory = await Category.deleteMany({film:req.params.id})
         if(!deleteFilm){
-            return res.status(401).json({success:false,message:'Post not found or user not authorised'})
+            return res.status(401).json({success:false,message:'Not found or user not authorised'})
         }
         res.json({success:true,film:deleteFilm})
     } catch(error){

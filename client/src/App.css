@@ -472,3 +472,9 @@ a {
   outline: none;
   box-shadow: none;
 }
+
+/* avatar */
+
+.anticon svg {
+  margin-bottom: 50%;
+}

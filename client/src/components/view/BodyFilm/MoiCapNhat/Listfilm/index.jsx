@@ -3,7 +3,7 @@ import './style.css';
 import { FilmContext } from '../../../../contexts/FilmContext';
 import ReactPaginate from "react-paginate";
 function ListFilm(props) {
-  const {filmState:{films},getFilms} = useContext(FilmContext)
+  const {filmState:{films,filmsLoading},getFilms} = useContext(FilmContext)
   useEffect(() => getFilms(), [])
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -43,10 +43,23 @@ function ListFilm(props) {
   console.log(films)
   return (
     <>
+        {filmsLoading &&
+                        
+            <div className='d-flex justify-content-center mt-2' style={{height:'322px'}}>
+                  <div className="spinner-border text-danger align-self-center"  role="status">
+                      <span className="visually-hidden">Loading...</span>
+                  </div>
+            </div>
+        }
       <div className="movie-list">
-              {display}
+              {display.sort(
+    (b, a) =>
+      new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+  )}
       </div>
+      {!filmsLoading &&
       <div className='mt-5'>
+        
         <ReactPaginate
             previousLabel={"Trước"}
             nextLabel={"Sau"}
@@ -58,7 +71,10 @@ function ListFilm(props) {
             disabledClassName={"paginationDisabled"}
             activeClassName={"paginationActive"}
         />
+        
       </div>
+      }
+      
     </>
     
     
