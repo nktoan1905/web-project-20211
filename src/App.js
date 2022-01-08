@@ -23,6 +23,7 @@ function App() {
         </Paper>
         <div className="components">
         <Routes>
+         
           <Route path="/" element={<p>Home</p>}></Route>
           <Route path="/films" element={<FilmFeatures />}>
               <Route path= "/films" element={<ListFilmPage/>}/>

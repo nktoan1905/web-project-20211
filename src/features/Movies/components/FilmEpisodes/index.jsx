@@ -19,6 +19,7 @@ import InputField from "../../../../components/form-controls/InputFIelds";
 import FilmEpisodeFormEdit from "../FilmEpisodeFormEdit";
 import { apiUrl } from "../../../Constants/constants";
 import axios from "axios";
+
 const useStyles = makeStyles({
   root: {
     marginTop: "10px",
@@ -111,6 +112,7 @@ const FilmEpisodes = (props) => {
       console.log(error)
     }
   }
+  
   const handleSubmit = (values) => {
     const newEpisode = {
       title: values.title,
@@ -182,7 +184,7 @@ const FilmEpisodes = (props) => {
                 fullWidth
                 onClick={() => handleClickOpen(value)}
               >
-                {value.title}
+                {value.epNum}
               </Button>
             </Grid>
           ))}
@@ -195,7 +197,7 @@ const FilmEpisodes = (props) => {
         >{`Tập ${data.title}`}</DialogTitle>
         <DialogContent className={classes.content}>
           <ReactPlayer url={data.url} playIcon width={"100%"} />
-          <FilmEpisodeFormEdit onSubmit={setData} episode={data} />
+          <FilmEpisodeFormEdit filmId={filmId} setOpen={setOpen} onSubmit={setData} episode={data}/>
         </DialogContent>
         <DialogActions>
           <Button onClick={()=>deleteEpisode(data._id)} color="secondary">

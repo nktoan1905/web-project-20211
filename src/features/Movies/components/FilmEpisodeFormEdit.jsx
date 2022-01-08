@@ -1,32 +1,53 @@
-import React from "react";
+import React,{useState} from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import InputField from "../../../components/form-controls/InputFIelds";
 import { Button, Box, Typography } from "@mui/material";
-
+import { apiUrl } from "../../Constants/constants";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const FilmEpisodeFormEdit = (props) => {
+  let navigate = useNavigate()
   const data = props.episode
+  const { onSubmit,setOpen,filmId } = props;
+  const [ep,setEp] = useState(data)
   const schema = yup.object().shape({
     title: yup.string(),
     url: yup
       .string()
       .matches(
-        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+        /(ftp|http|https|):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/,
         "Enter correct url!"
       ),
   });
   const form = useForm({
     defaultValues: {
-      title: data.title,
-      url: data.url,
+      title: ep.title,
+      url: ep.url,
     },
     resolver: yupResolver(schema),
   });
+
+  const updateEpisode = async(updatedEpisode) =>{
+    try {
+      const response = await axios.put(`${apiUrl}/films/episode/${ep._id}`,updatedEpisode)
+      if(response.data.success){
+        setEp(response.data.episode)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const handleSubmit = (values) => {
-    const { onSubmit } = props;
-    if (onSubmit) onSubmit(values);
+    
+    onSubmit(values);
     console.log(values);
+    updateEpisode({...values,epNum:ep.epNum})
+    form.reset(values);
+    navigate(`/films`)
+    navigate(`/films/${filmId}`)
+    setOpen(false)
   };
   return (
     <Box
