@@ -7,10 +7,13 @@ function ListFilm(props) {
   useEffect(() => getFilms(), [])
   const [pageNumber, setPageNumber] = useState(0);
 
-  const filmsPerPage = 10;
+  const filmsPerPage = 15;
   const pagesVisited = pageNumber * filmsPerPage;
 
-    const display = films
+    const display = films.sort(
+      (a, b) =>
+        new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    )
     .slice(pagesVisited, pagesVisited + filmsPerPage)
     .map(film => (
       
@@ -19,7 +22,7 @@ function ListFilm(props) {
           href={`/film/${film._id}`}
         >
           <div className="episode-latest">
-            <span>??/{film.numOfep}</span>
+            <span>{film.numOfep} tập</span>
           </div>
           <div>
             <img src={film.image} alt={film.title} />
@@ -52,10 +55,7 @@ function ListFilm(props) {
             </div>
         }
       <div className="movie-list">
-              {display.sort(
-    (b, a) =>
-      new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-  )}
+              {display}
       </div>
       {!filmsLoading &&
       <div className='mt-5'>

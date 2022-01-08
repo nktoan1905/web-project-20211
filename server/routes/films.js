@@ -114,6 +114,33 @@ router.post('/byId/:id', async (req, res) => {
 	}
 })
 
+router.put('/episode/:id',async(req,res)=>{
+	const { title, epNum, url} = req.body
+    const episode = await Episode.findOne({_id:req.params.id});
+	if (!title || !url)
+		return res
+			.status(400)
+			.json({ success: false, message: 'Required' })
+
+	try {
+		let updatedEpisode ={
+			title, epNum, url,film:episode.film
+		}
+
+		updatedEpisode = await Episode.findOneAndUpdate({_id:req.params.id},updatedEpisode,{new:true})
+
+		if(!updatedEpisode){
+            return res.status(401).json({success:false,message:'Episode not found or user not authorised'})
+        }
+
+		res.json({ success: true, message: 'success!', episode: updatedEpisode })
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ success: false, message: 'Internal server error' })
+	}
+})
+
+
 router.delete('/episode/:id',async(req,res)=>{
 	try{
         const deleteEpisode = await Episode.findOneAndDelete({_id: req.params.id})
@@ -165,16 +192,16 @@ router.delete('/category/:id', async(req,res)=>{
 
 
 router.put('/:id', async (req, res) => {
-	const { title, description, category,image, point,reviewerNum,year,numOfep} = req.body
+	const { title, description,image, point,reviewerNum,year,numOfep} = req.body
 
-	if (!title || !description || !category || !image ||!year ||!numOfep)
+	if (!title || !description || !image ||!year ||!numOfep)
 		return res
 			.status(400)
 			.json({ success: false, message: 'Required' })
 
 	try {
 		let updatedFilm = {
-			title, description, category,image, point,reviewerNum,year,numOfep
+			title, description,image, point,reviewerNum,year,numOfep
 		}
 
 		updatedFilm = await Film.findOneAndUpdate({_id:req.params.id},updatedFilm,{new:true})
