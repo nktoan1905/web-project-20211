@@ -59,6 +59,4 @@ html,body{
 }
 .components>div{
   display: block;
-  height: 100%;
-  width: 100%;
 }

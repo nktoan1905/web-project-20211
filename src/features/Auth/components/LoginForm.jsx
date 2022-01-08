@@ -1,23 +1,23 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LockOutlined } from "@mui/icons-material";
-import { Avatar, Button, LinearProgress, Typography } from "@mui/material";
+import { Avatar, Button, LinearProgress, Typography,Alert ,Collapse} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import PropTypes from "prop-types";
-import React from "react";
+import React,{useContext,useState} from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import InputField from "../../../components/form-controls/InputFIelds";
 import PasswordField from "../../../components/form-controls/PasswordField";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 
 const useSyles = makeStyles((theme) => ({
   root: {
-    position: "relative",
     padding: "20px",
     display: "block",
-    width: "600px",
-    height: "350px",
-    margin: "100px auto 0 auto",
+    width: 'calc(100% - 300px)',
+    height: "320px",
     backgroundImage: "linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)",
     border: "1px solid #333",
     borderRadius:"5px"
@@ -47,12 +47,25 @@ LoginForm.propTypes = {
 };
 
 function LoginForm(props) {
+  let navigate = useNavigate()
+  const {loginUser} = useContext(AuthContext)
+  const [open, setOpen] = useState(false);
+  const login = async (loginForm)=>{
+    try{
+        const loginData = await loginUser(loginForm)
+        if(loginData.success){
+            navigate('/films')
+        }else{
+            setOpen(true)
+            setTimeout(()=>setOpen(false),3000)
+        }
+    }catch(error){
+        console.log(error)
+    }
+}
+
   const classes = useSyles();
   const schema = yup.object().shape({
-    email: yup
-      .string()
-      .required("Please enter your email.")
-      .email("Please enter a valid email address"),
     password: yup
       .string()
       .required("Please enter your password")
@@ -60,7 +73,7 @@ function LoginForm(props) {
   });
   const form = useForm({
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
     resolver: yupResolver(schema),
@@ -70,6 +83,7 @@ function LoginForm(props) {
     const { onSubmit } = props;
     if (onSubmit) {
       onSubmit(values);
+      login(values);
     }
 
     form.reset();
@@ -77,6 +91,9 @@ function LoginForm(props) {
 
   return (
     <div className={classes.root}>
+      <Collapse in={open}>
+        <Alert severity="error">Sai tài khoảng hoặc mật khẩu</Alert>
+      </Collapse>
       {isSubmitting && <LinearProgress className={classes.progress} />}
       <Avatar className={classes.avatar}>
         <LockOutlined></LockOutlined>
@@ -85,7 +102,7 @@ function LoginForm(props) {
         Sign In
       </Typography>
       <form onSubmit={form.handleSubmit(handleSubmit)} >
-        <InputField name="email" label="Email" form={form} />
+        <InputField name="username" label="Username" form={form} />
         <PasswordField name="password" label="Password" form={form} />
         <Button
           disabled={isSubmitting}
