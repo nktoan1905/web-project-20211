@@ -286,7 +286,6 @@ span.ms-0.bg{
 }
 
 
-
 .tab-content{
   width: 20%;
 }
@@ -307,6 +306,7 @@ span.ms-0.bg{
 }
 .ant-dropdown-menu{
   width: 596px;
+  background-color: #000!important;
 }
 
 @media all and (max-width: 768px) {
@@ -322,6 +322,23 @@ span.ms-0.bg{
 .tab-content a:hover {
   background: #3e3e3e;
 }
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab{
+  background-color: #000!important;
+
+}
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active{
+  background-color: rgb(173, 30, 30)!important
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+  color: #ccc!important;
+}
+
+.ant-tabs{
+  color: #ccc!important;
+}
+
 /* search-bar */
 .searchInputs {
   display: flex;

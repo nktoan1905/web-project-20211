@@ -1,0 +1,52 @@
+.film-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  display: block;
+}
+.film-item .header {
+  position: relative;
+  width: 190px;
+  height: 235px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.film-item .header img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.film-item .header .point {
+  background-color: brown;
+  padding: 2px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+}
+.film-item .header .point span {
+  color: #eee;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+}
+.film-item .title {
+  margin-top: 5px;
+  padding-left: 5px;
+  /* width: 100%; */
+  width: 190px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.film-item .title span {
+  color: black;
+
+}

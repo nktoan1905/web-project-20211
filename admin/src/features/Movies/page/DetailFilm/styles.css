@@ -1,0 +1,28 @@
+.container-film-detail{
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+    position: relative;
+
+}
+.container-film-detail .film {
+    margin: 0 auto;
+}
+.container-film-detail .film-esp{
+    margin-top: 10px;
+}
+.container-film-detail .btn-del {
+    position: absolute;
+    bottom: 3px;
+    right: 26px;
+}
+.container-film-detail .btn-del:hover {
+    background-color: red;
+    color: aliceblue;
+}
+
+
+.container-film-detail .btn-del{
+    bottom: -60px!important;
+}
