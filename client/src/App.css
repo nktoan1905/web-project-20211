@@ -1,0 +1,498 @@
+
+@media screen {
+  .container-fix{
+    width: 1050px;
+    background-color: rgb(36, 36, 36);
+  } 
+  .landing {
+    position: relative;
+    background: url(https://image.nhadatmoi.net/tin-tuc/wp-content/uploads/2020/12/16173934/anh-giang-sinh-buon.jpg) no-repeat center center/cover;
+    height: 1;
+    min-height: 100vh;
+  }
+}
+
+
+@media  all and (max-width: 768px) {
+  .container-fix{
+    width: 90%!important;
+    background-color: rgb(36, 36, 36);
+  } 
+}
+
+@media  all and (max-width: 576px) {
+  .container-fix{
+    max-width: 90%!important;
+    background-color: rgb(36, 36, 36);
+  } 
+}
+
+@media  all and (max-width: 375px) {
+  .container-fix{
+    width: 90%!important;
+    background-color: rgb(36, 36, 36);
+  } 
+}
+
+@media  all and (max-width: 992px) {
+  .container-fix{
+    width: 90%!important;
+    background-color: rgb(36, 36, 36);
+  } 
+}
+
+.list-group-item-fix {
+  position: relative;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #ccc;
+  text-decoration: none;
+  background-color: #212529;
+  border-bottom: 1px solid rgb(86 83 83);
+}
+
+.list-group-item-fix:last-child {
+  border-bottom: 0;
+}
+
+.img-thumbnail-fix {
+  padding: 0.25rem;
+  background-color: #000000;
+  border: 1px solid #1d1e1e;
+  border-radius: 0.25rem;
+  max-width: 200px;
+  height: auto;
+}
+
+.card-header{
+  color: #ccc;
+  font-weight: 700;
+}
+
+.bg{
+  background-color: #404040!important;
+  color: #ccc!important;
+}
+
+.btn-play{
+  background-color: #25867D!important;
+  color: #ccc!important;
+}
+.btn-book{
+  background-color: #369e69!important;
+  color: #ccc!important;
+}
+.btn-star{
+  background-color: #986a25!important;
+  color: #ccc!important;
+}
+
+.btn-play:hover,.btn-book:hover,.btn-star:hover{
+  opacity: 0.8;
+}
+.btn-ep{
+  background-color: #333232;
+  color: #ccc;
+  border: 1px solid  #4e4e4e;
+  text-align: center;
+  padding: 10px 5px;
+  width: 25%;
+}
+
+.btn-ep:hover{
+  background-color: #bb6464;
+}
+.card-height{
+  min-height: 340px;
+}
+
+/* comment */
+.bg-comment{
+  background-color: #171717!important;
+  color: #ccc!important;
+}
+
+textarea {
+  background-color: #171717;
+  width: 100%;
+  padding: 8px;
+  height: 73px;
+  color: #ccc;
+  box-sizing: border-box;
+}
+
+.comments {
+  margin-top: 20px;
+}
+
+.comments-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.comments-container {
+  margin-top: 40px;
+}
+
+.comment-form-title {
+  font-size: 22px;
+}
+
+.comment-form-textarea {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  border: 1px solid rgb(107, 114, 12);
+}
+
+.comment-form-button {
+  font-size: 16px;
+  padding: 8px 16px;
+  background: rgb(59, 130, 246);
+  border-radius: 8px;
+  color: white;
+}
+
+.comment-form-button:hover:enabled {
+  cursor: pointer;
+  background: rgb(37, 99, 235);
+}
+
+.comment-form-button:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.comment-form-cancel-button {
+  margin-left: 10px;
+}
+
+.comment {
+  display: flex;
+  margin-bottom: 28px;
+}
+
+.comment-image-container {
+  margin-right: 12px;
+  width: 100px;
+}
+
+.comment-image-container img {
+  border-radius: 50px;
+}
+
+.comment-right-part {
+  width: 100%;
+}
+
+.comment-content {
+  display: flex;
+}
+
+.comment-author {
+  margin-right: 8px;
+  font-size: 20px;
+  color: rgb(59, 130, 246);
+}
+
+.comment-text {
+  font-size: 18px;
+}
+
+.comment-actions {
+  display: flex;
+  font-size: 12px;
+  color: rgb(129, 126, 126);
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.comment-action {
+  margin-right: 8px;
+}
+
+.comment-action:hover {
+  text-decoration: none;
+}
+
+.replies {
+  margin-top: 20px;
+}
+
+
+.star {
+  display: inline-block;  
+  cursor: pointer;
+}
+
+.inactive, .active {
+  background: transparent;
+  user-select: none;
+}
+
+.inactive {
+  color: #f1f1e8;
+}
+
+.active {
+  color: red;
+}
+
+.form-control{
+  border: none!important;
+  color: #ccc!important;
+  border-radius: 0!important;
+  outline: none!important;
+}
+
+.w-200{
+  width: 200px;
+}
+
+.search-input{
+  width: 500px;
+  height: 35px;
+}
+
+.container-fluid{
+  border-bottom: 0.3px solid rgb(129, 129, 129);
+}
+
+span.ms-0.bg{
+  padding-top: 5px;
+  padding-right: 10px;
+}
+
+.button-header{
+  padding: 3px 10px;
+  margin: 3px 3px;
+  font-size: 20px;
+  display: inline-flex;
+  background-color: #000;
+  border: 1px solid #404040;
+  color: #ccc;
+}
+
+/* dropdown */
+.dropdown-item{
+  background-color: #171717!important;
+  color: #ccc!important;
+}
+
+.dropdown-menu.show{
+  background-color: #171717!important;
+  border-radius: 0%;
+}
+
+
+.tab-content{
+  width: 20%;
+}
+
+.tab-content a {
+  width: 100%!important;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #141414;
+  font-size: 13px;
+  background: #000000;
+  display: block;
+}
+
+.ant-tabs-tabpane{
+  padding:10px;
+}
+.ant-dropdown-menu{
+  width: 596px;
+  background-color: #000!important;
+}
+
+@media all and (max-width: 768px) {
+  .ant-dropdown-menu{
+    width: 300px;
+  }
+
+  .tab-content{
+    width: calc(100% / 3);
+  }
+}
+
+.tab-content a:hover {
+  background: #3e3e3e;
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab{
+  background-color: #000!important;
+
+}
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active{
+  background-color: rgb(173, 30, 30)!important
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+  color: #ccc!important;
+}
+
+.ant-tabs{
+  color: #ccc!important;
+}
+
+/* search-bar */
+.searchInputs {
+  display: flex;
+}
+
+@media all and (max-width: 768px) {
+  .search input {
+    color: #ccc;
+    border: 0;
+    border-radius: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-size: 14px;
+    padding: 15px;
+    height: 30px;
+    width: 300px!important;
+    background-color: #171717;
+  }
+
+  .dataResult {
+    z-index: 1;
+    position: absolute;
+    margin-top: 5px;
+    width: 300px!important;
+    
+    background-color: #171717;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  
+  }
+}
+
+@media all and (max-width: 375px) {
+  .search input {
+    color: #ccc;
+    border: 0;
+    border-radius: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-size: 14px;
+    padding: 15px;
+    height: 30px;
+    width: 200px!important;
+    background-color: #171717;
+  }
+}
+.search input {
+  color: #ccc;
+  border: 0;
+  border-radius: 2px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-size: 14px;
+  padding: 15px;
+  height: 30px;
+  width: 440px;
+  background-color: #171717;
+}
+
+.searchIcon {
+  width: 50px;
+  background-color: #171717;
+  display: grid;
+  place-items: center;
+  color: #ccc;
+}
+
+input:focus {
+  outline: none;
+}
+.searchIcon svg {
+  font-size: 35px;
+}
+
+.dataResult {
+  z-index: 1;
+  position: absolute;
+  margin-top: 5px;
+  width: 390px;
+  
+  background-color: #171717;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+.dataResult::-webkit-scrollbar {
+  display: none;
+}
+
+.dataResult .dataItem {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.dataItem p {
+  padding-top: 10px;
+  height: 30px;
+  margin-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+  
+}
+a {
+  text-decoration: none;
+  color: #ccc!important;
+}
+
+.dataResult a:hover {
+  background-color: lightgrey;
+  color: #171717!important
+}
+
+#clearBtn {
+  cursor: pointer;
+}
+
+/* Filter */
+.ant-collapse-item{
+  
+  border: none!important;
+  border-radius: none;
+}
+.ant-collapse-header{
+  color: #ccc!important;
+  border-radius: 0!important;
+  background-color: #404040;
+  font-weight: 500;
+  
+}
+.ant-collapse.ant-collapse-icon-position-left{
+  border: none;
+  
+}
+.ant-collapse-content{
+  color: #ccc!important;
+  font-weight: 500;
+  border-radius: 0!important;
+  background-color: #404040!important;
+}
+
+.ant-checkbox-inner{
+  opacity: 0;
+  position: absolute!important;
+  left: 0!important;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* avatar */
+
+.anticon svg {
+  margin-bottom: 50%;
+}

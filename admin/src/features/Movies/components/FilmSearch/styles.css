@@ -1,0 +1,123 @@
+.form-search{
+    position: relative;
+    padding-right: 5px;
+}
+.form-search .btn-submit{
+    float: right;
+}
+
+.searchInputs {
+    display: flex;
+  }
+  
+  @media all and (max-width: 768px) {
+    .search input {
+      color: #ccc;
+      border: 0;
+      border-radius: 2px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      font-size: 14px;
+      padding: 15px;
+      height: 30px;
+      width: 300px!important;
+      background-color: #171717;
+    }
+  
+    .dataResult {
+      z-index: 1;
+      position: absolute;
+      margin-top: 5px;
+      width: 300px!important;
+      
+      background-color: #171717;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+    }
+  }
+  
+  @media all and (max-width: 375px) {
+    .search input {
+      color: #ccc;
+      border: 0;
+      border-radius: 2px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      font-size: 14px;
+      padding: 15px;
+      height: 30px;
+      width: 200px!important;
+      background-color: #171717;
+    }
+  }
+  .search input {
+    color: #ccc;
+    border: 0;
+    border-radius: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-size: 14px;
+    padding: 15px;
+    height: 30px;
+    width: 100%;
+    background-color: #171717;
+  }
+  
+  .searchIcon {
+    width: 50px;
+    background-color: #171717;
+    display: grid;
+    place-items: center;
+    color: #ccc;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  .searchIcon svg {
+    font-size: 35px;
+  }
+  
+  .dataResult {
+    z-index: 1;
+    position: absolute;
+    margin-top: 5px;
+    width: 300px;
+    
+    background-color: #171717;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  
+  }
+  
+  .dataResult::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .dataResult .dataItem {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .dataItem p {
+    padding-top: 10px;
+    height: 30px;
+    margin-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+  }
+  a {
+    text-decoration: none;
+    color: #ccc!important;
+  }
+  
+  .dataResult a:hover {
+    background-color: lightgrey;
+    color: #171717!important
+  }
+  
+  #clearBtn {
+    cursor: pointer;
+  }

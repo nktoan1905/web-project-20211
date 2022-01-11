@@ -1,0 +1,120 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username":"gnourt1234",
+    "password":"1234"
+}
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username":"gnourt1234",
+    "password":"1234"
+}
+
+###
+
+
+POST http://localhost:5000/api/auth/admin/register
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"123456"
+}
+
+###
+
+
+POST http://localhost:5000/api/films
+Content-Type: application/json
+
+{
+    "title":"Mushoku Tensei: Isekai Ittara Honki Dasu",
+    "description":"Mình sẽ sống nghiêm túc tại thế giới này!Một ông chú fap sư 34 tuổi, thất nghiệp, làm NEET là chính.Ngay sau khi chú ta bị đá ra khỏi nhà vào cái ngày đưa tang song thân phụ mẫu, truck-kun chào đón chú ta và tiễn về thế giới khác.Khi giật mình tỉnh giấc chú ta nhận ra bản thân đã đầu thai thành đứa bé sống trong thế giới của Kiếm và Ma pháp.",
+    "category":"Anime Hành động Giả tưởng Mecha",
+    "image":"https://animehay.club/upload/poster/3165.jpg",
+    "point":0,
+    "reviewerNum":0,
+    "year":"2021",
+    "numOfep":23
+
+}
+
+###
+POST http://localhost:5000/api/films/byId/61c2ade19f3f493dd7d6b7a9
+Content-Type: application/json
+
+{
+    "title":"1",
+    "epNum":1,
+    "url":"https://www.youtube.com/watch?v=q15y18-gD5g"
+}
+
+###
+POST http://localhost:5000/api/films/category/61c2ade19f3f493dd7d6b7a9
+Content-Type: application/json
+
+{
+    "name":"Giả tưởng"
+}
+
+
+###
+GET http://localhost:5000/api/films
+
+###
+GET http://localhost:5000/api/films/byId/61c2a4a0ca0ecd236a3538be
+
+
+###
+POST http://localhost:5000/api/comments/61bdc490f43d62cd12d42851
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY2I2NjA0YjE3NmNjMjQ4MDRlYTgiLCJpYXQiOjE2Mzk4MzUxMzJ9.2qVtJJs0TNOceUN_MYUJ3mvxGJGJTtGuNrUEasuAv9E
+
+{
+    
+    "commentBody":"Hay lắm",
+    "commentParentId":"61bdf5e4c91bb52aa16aa38f"
+}
+
+###
+GET  http://localhost:5000/api/comments/617ccdd8635cc50f5e3b5c55
+
+###
+PUT http://localhost:5000/api/comments/61862dbdd12fb95a00f0f28f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY2I2NjA0YjE3NmNjMjQ4MDRlYTgiLCJpYXQiOjE2MzYxODMwMTh9.KwJ7NuyZU8t4MB8nvQZJzVKCQpm0TbEGsDy0gE_67Js
+
+{
+    "commentBody":"Hay lắm nha"
+}
+
+###
+DELETE  http://localhost:5000/api/comments/61862dbdd12fb95a00f0f28f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY2I2NjA0YjE3NmNjMjQ4MDRlYTgiLCJpYXQiOjE2MzYxODMwMTh9.KwJ7NuyZU8t4MB8nvQZJzVKCQpm0TbEGsDy0gE_67Js
+
+###
+POST http://localhost:5000/api/films/617ccc6e88c3542cd618a1d3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY2M2ZTg4YzM1NDJjZDYxOGExZDMiLCJpYXQiOjE2NDAxMDAwMzZ9.d6DZU0_UihmdzAY13MOT56e12iLVzqPf5NAMjnU37wA
+
+{
+    "userId":"617ccc6e88c3542cd618a1d3",
+    "filmId":"61bdc490f43d62cd12d42851",
+    "title":"Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
+    "image":"https://animehay.club/upload/poster/3353-1633233301.jpg",
+    "point":0,
+    "numOfep":12
+}
+
+###
+GET http://localhost:5000/api/films/subcribe
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTdjY2M2ZTg4YzM1NDJjZDYxOGExZDMiLCJpYXQiOjE2NDAwOTQ5OTZ9.a7VkiPi1i02eTRq9JxjaYBXDWdKvIT9VTIM76yyYkp0
+
+
