@@ -14,7 +14,6 @@ import "./styles.css";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import DialogFilter from "../FIlmFilters/DialogFilter";
-import FilmCategory from "./FilmCategory";
 import {apiUrl} from '../../../Constants/constants'
 import axios from "axios";
 const useStyles = makeStyles({
@@ -23,8 +22,6 @@ const useStyles = makeStyles({
 
 const FilmInfo = (props) => {
   const { film } = props;
-  const filmCategory = ["Anime", "Hành động", "Giả tưởng", "Mecha"];
-  const [categoryfilm, setCategoryFilm] = useState(filmCategory);
   const [anime,setAnime] = useState(film)
   // shcema
   const shcema = yup.object().shape({
@@ -135,7 +132,6 @@ const FilmInfo = (props) => {
               spellCheck="false"
             />
           </div>
-          <FilmCategory categoryfilm={categoryfilm} setCategoryFilm={setCategoryFilm} />
           <div className="btn-edit-info-film">
             <Button variant="contained" onClick={handleClickOpen}>
               Edit Film Info

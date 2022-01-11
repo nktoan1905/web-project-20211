@@ -1,44 +1,61 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Button, TextField } from "@mui/material";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
 import "./styles.css";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import SearchIcon from "@mui/icons-material/Search";
-import InputField from "../../../../components/form-controls/InputFIelds";
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
+import {Link} from 'react-router-dom'
+function SearchBar({ placeholder, data }) {
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
 
-const FilmSearch = (props) => {
-  const shcema = yup.object().shape({
-    title: yup.string().required("Please enter film name."),
-  });
-  const form = useForm({
-    defaultValues: {
-      title: "",
-    },
-    resolver: yupResolver(shcema),
-  });
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    setWordEntered(searchWord);
+    const newFilter = data.filter((value) => {
+      return value.title.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+
+  const clearInput = () => {
+    setFilteredData([]);
+    setWordEntered("");
   };
 
   return (
-    <form onSubmit={form.handleSubmit(handleSubmit)} className="form-search">
-      <InputField name="title" label="Title" form={form} />
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        className="btn-submit"
-        style={{textTransform: "none"}}
-      >
-        <SearchIcon></SearchIcon>
-        Search
-      </Button>
-    </form>
+    <div className="search">
+      <div className="searchInputs">
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={wordEntered}
+          onChange={handleFilter}
+        />
+        <div className="searchIcon">
+          {filteredData.length === 0 ? (
+            <SearchIcon></SearchIcon>
+          ) : (
+            <span type="button" onClick={clearInput}><CloseIcon></CloseIcon></span>
+          )}
+        </div>
+      </div>
+      {filteredData.length != 0 && (
+        <div className="dataResult">
+          {filteredData.slice(0, 6).map((value, key) => {
+            return (
+              <Link key={value._id} className="dataItem" to={`/films/${value._id}`}>
+                <p>{value.title} </p>
+              </Link>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
-};
+}
 
-FilmSearch.propTypes = {};
-
-export default FilmSearch;
+export default SearchBar;

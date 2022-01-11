@@ -103,7 +103,7 @@ const ListFilmPage = () => {
     <Box>
       <Grid container>
         <Grid item className="left-lf">
-          <FilmSearch />
+          <FilmSearch placeholder="Nhập từ khóa..." data={films}/>
           <FilmFilters filters={filters} setFilters={setFilters} />
           <Button
             variant="outlined"
