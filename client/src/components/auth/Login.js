@@ -50,10 +50,10 @@ const Login = () => {
                         </div>
                     </form>
                     <div className='text-center mt-3'>
-                        <p>Bạn ko có tài khoản?{' '}
-                            <Link to='/register'>
+                        <p>Bạn không có tài khoản?{' '}
+                            <a href='/register'>
                                 <button className='btn btn-success'>Đăng ký</button>
-                            </Link>
+                            </a>
                         </p>
                     </div>
                 </div>

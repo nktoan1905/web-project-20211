@@ -81,9 +81,9 @@ const Header = () => {
                             </Dropdown>
                             {!isAuthenticated &&
                             <li className="nav-item">
-                                <a href='/login'>
+                                <Link to='/login'>
                                     <div className="button-header"><i className="bi bi-box-arrow-in-right"></i></div>
-                                </a>
+                                </Link>
                             </li>
                             }
                             {isAuthenticated &&
@@ -99,9 +99,10 @@ const Header = () => {
                             </li>
                             }
                             <li className="nav-item">
-                                <a href='/subcribe'>
+                                <Link to='/subcribe'>
+                                    
                                     <div className="button-header"><i className="bi bi-file-plus"></i></div>
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                         

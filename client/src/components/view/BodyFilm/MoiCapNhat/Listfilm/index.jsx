@@ -2,6 +2,7 @@ import React,{useContext,useEffect,useState} from 'react';
 import './style.css';
 import { FilmContext } from '../../../../contexts/FilmContext';
 import ReactPaginate from "react-paginate";
+import { Link } from 'react-router-dom';
 function ListFilm(props) {
   const {filmState:{films,filmsLoading},getFilms} = useContext(FilmContext)
   useEffect(() => getFilms(), [])
@@ -18,9 +19,8 @@ function ListFilm(props) {
     .map(film => (
       
       <div key={film._id} className="movie-item">
-        <a
-          href={`/film/${film._id}`}
-        >
+        <Link to={`/film/${film._id}`}>
+          
           <div className="episode-latest">
             <span>{film.numOfep} tập</span>
           </div>
@@ -29,7 +29,7 @@ function ListFilm(props) {
           </div>
           <div className="score">{film.point}</div>
           <div className="name-movie">{film.title}</div>
-        </a>
+          </Link>
       </div>
     
     ))

@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './style.css';
 import { FilmContext } from '../../../../contexts/FilmContext';
-
+import { Link } from 'react-router-dom';
 function ListFilm(props) {
   const {
     filmState: { films,filmsLoading },
@@ -27,13 +27,13 @@ function ListFilm(props) {
 
   const display = newFilms.map((item) => (
     <div key={item._id} style={{ width: '220px' }}>
-      <a href={`/film/${item._id}`}>
+      <Link to={`/film/${item._id}`}>
         <div>
           <img src={item.image} alt={item.title} />
           <div className="name">{item.title}</div>
           <div className="episode_latest">{item.numOfep}</div>
         </div>
-      </a>
+      </Link>
     </div>
   ));
 

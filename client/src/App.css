@@ -6,7 +6,7 @@
   } 
   .landing {
     position: relative;
-    background: url(https://image.nhadatmoi.net/tin-tuc/wp-content/uploads/2020/12/16173934/anh-giang-sinh-buon.jpg) no-repeat center center/cover;
+    background: url(https://images.unsplash.com/photo-1583585635793-0e1894c169bd?ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDE3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&w=1000&q=80) no-repeat center center/cover;
     height: 1;
     min-height: 100vh;
   }
@@ -439,6 +439,7 @@ input:focus {
   margin-left: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   
 }
 a {

@@ -22,28 +22,32 @@ const Subcribe = () => {
     const body = (
         <>
         
-        {subfilm.length !==0 && 
+        {subfilm && subfilm.length !==0 && 
         subfilm.map(film => (
-                            
-            <div key={film.filmId} className="movie-item">
-                <Link
-                to={`/film/${film.filmId}`}
-                >
-                <div className="episode-latest">
-                    <span>6/??</span>
+             <>
+                {film &&
+                <div key={film.filmId} className="movie-item">
+                    <Link
+                    to={`/film/${film.filmId}`}
+                    >
+                    <div className="episode-latest">
+                        <span>{film.numOfep} tập</span>
+                    </div>
+                    <div>
+                        <img src={film.image} alt={film.title} />
+                    </div>
+                    <div className="score">{film.point}</div>
+                    <div className="name-movie">{film.title}</div>
+                    
+                    </Link>
+                    
+                    <button onClick={() => {deleteSubfilm(user._id,film.filmId);notifyCancel()}} className='close'><i class="bi bi-x-lg"></i></button>
+                    
+                
                 </div>
-                <div>
-                    <img src={film.image} alt={film.title} />
-                </div>
-                <div className="score">{film.point}</div>
-                <div className="name-movie">{film.title}</div>
-                
-                </Link>
-                
-                <button onClick={() => {deleteSubfilm(user._id,film.filmId);notifyCancel()}} className='close'><i class="bi bi-x-lg"></i></button>
-                
+                }
+             </>               
             
-            </div>
         
         ))
         }
